@@ -1,0 +1,65 @@
+
+<!--
+Autor=Lorena Marchan
+Fecha=14-nov-2014
+Licencia=gpl30
+Version=1.0
+Descripcion=Visor de Imagenes que al pulsar sobre los botones cambia la imagen, 
+            y al pulsar sobre la imagen abre una ventana nueva de 500x500 con la imagen.
+-->
+
+<!--
+Copyright (C) 2014 Lorena Marchan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>examen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body{text-align: center;}
+            table{margin: 0px auto;}
+        </style>
+        <script type="text/javascript" src="js/examen.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Visor de Imagenes</h1>
+        <div id="galeria">
+            <hr>
+            <table border="1">
+
+                <tr>
+                    <td colspan="4">URL<input type="text" id="url" value=""></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><a href="#" onclick="grande()"><img src="img/Img0.gif" id="imagen" alt="u"></a></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="|<" id="primero" onclick="primero();url()"></td>
+                    <td><input type="button" value="<" id="anterior" onclick="anterior();url()"></td>
+                    <td><input type="button" value=">" id="siguiente" onclick="siguiente();url()"></td>
+                    <td><input type="button" value=">|" id="ultimo" onclick="ultimo();url()"></td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 03-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = oInvestiga las diferencias entre las siguientes propiedades
+relacionadas con las coodenadas de los eventos de ratón:
+•clientX, clientY
+•screenX, screenY
+•pageX, pageY
+oDesarrolla una página html y un script javascript que muestren
+todas estas propiedades para un event onclik sobre la página html
+oPrueba el script en firefox e internet explorer, ¿están todas las
+propiedades disponibles en los dos?
+oRealiza los cambios necesarios en tu script para obtener todas
+las propiedades en ambos navegadores.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Actividad 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            div{
+                float:left;
+                padding: 5px;
+                margin: 5px;
+                border: solid 1px;
+            }
+            body{
+                min-height: 900px;
+            }
+        </style>
+    </head>
+    <body id="cuerpo">
+        <script type="text/javascript">
+            function key(elEvento) {
+                var evento = elEvento || window.event;
+                var s = document.getElementById("cuerpo").innerHTML;
+                s += '<div>' + evento.type +
+                        '<br>client x-y = ' + evento.clientX + '/' + evento.clientY + '\n' +
+                        '<br>screen x-y = ' + evento.screenX + '/' + evento.screenY + '\n' +
+                        '<br>page x-y = ' + evento.pageX + '/' + evento.pageY + '</div>';
+                document.getElementById("cuerpo").innerHTML = s;
+            }
+            window.onload = function () {
+                document.getElementById("cuerpo").onclick = key;
+            };
+        </script>
+    </body>
+</html>

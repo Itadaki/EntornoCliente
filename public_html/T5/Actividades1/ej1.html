@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 07-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+            body{
+                height: 900px;
+                border:thin solid silver
+            }
+            p{
+                height: 800px;
+                border:thin solid silver
+            }
+        </style>
+    </head>
+    <body id="cuerpo">
+        
+        <script type="text/javascript" src=""></script>
+        <script type="text/javascript">
+            function raton(elEvento){
+                var evento = elEvento || window.event;
+                var s = '<p><b>Ratón</b><br>' + evento.pageX + ' ' + evento.pageY + '</p>';
+                document.getElementById("cuerpo").innerHTML = s;
+            }
+            function teclado(elEvento){
+                var evento = elEvento || window.event;
+                var user = navigator.userAgent;
+                var s = '<p><b>Teclado</b><br>';
+                s += 'charCode: ' + evento.charCode;
+                if (user.indexOf("MSIE") !== -1) {
+                    s += '<br>String (keyCode): ' + String.fromCharCode(evento.keyCode);
+                } else {
+                    s += '<br>String (charCode): ' + String.fromCharCode(evento.charCode);
+                }
+                document.getElementById("cuerpo").innerHTML = s;
+                document.getElementById("cuerpo").style.backgroundColor='#CCE6FF';
+            }
+            function rn(){
+                document.getElementById("cuerpo").style.backgroundColor='#FFFFCC';
+            }
+            
+            window.onload = function () {
+                document.getElementById("cuerpo").onmouseover = raton;
+                document.getElementById("cuerpo").onmouseclick = rn;
+                document.getElementById("cuerpo").onkeypress = teclado;
+            };
+            
+         </script>
+    </body>
+</html>

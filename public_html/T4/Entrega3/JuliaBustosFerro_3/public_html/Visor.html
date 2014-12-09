@@ -1,0 +1,83 @@
+<!--
+Autor=Julia Bustos Ferro 
+Fecha=14-nov-2014
+Licencia=default
+Version=1.0
+Descripcion=GALERÍA DE IMÁGENES QUE VAN CAMBIANDO EN FUNCIÓN DEL BOTÓN SELECCIONADO
+-->
+
+<!--
+Copyright (C) 2014 Julia Bustos Ferro 
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Galería de imágenes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script type="text/javascript" src="visor.js"> </script>
+    </head>
+    <body>  <!-- Laura: la url la tienes que obtener y mostrar al cargar la página
+            INCLUIMOS UN VISOR POR EL QUE SE VE LA PROPIA PÁGINA, LA ACTUAL--> 
+        
+        <a href="Visor.html"> http://localhost:8383/JuliaBustosFerro_3/Visor.html </a><br>
+        <br>
+        <script>
+             /*USANDO EL OBJETO DOCUMENT ACCEDEMOS A LA IMAGEN A TRAVÉS DE ESTA FUNCIÓN*/ 
+             //Laura: ¿Qué es esto? SIEMPRE document.getElementById
+            function verImagen() {
+                if (!document.images)
+                    return
+                document.images.img.src = document.imagenes.imagen.options[document.imagenes.imagen.selectedIndex].value;
+            }
+        </script>
+           <!-- Laura: esto no es lo que pido
+           CON UN SELECT PODEMOS LISTAR LAS IMÁGENES QUE FORMAN PARTE DE LA GALERÍA-->
+        <form name="imagenes">
+            <select name="imagen" size="1" onchange="verImagen()">
+                <option value="Img0.gif" id="foto0"> Imagen 0 </option>
+                <option value="Img1.gif" id="foto1"> Imagen 1 </option>
+                <option value="Img2.gif" id="foto2"> Imagen 2 </option>
+                <option value="Img3.gif" id="foto3"> Imagen 3 </option>
+            </select>       
+        </form>
+        
+     
+        <img src="Img0.gif " id="img"><br>
+        
+        <input align="center" type="button" id="principio" value="principio" onclick="principio()"/>
+        <input align="center" type="button" id="anterior" value="anterior" onclick="anterior()"/>
+        <input align="center" type="button" id="siguiente" value="siguiente" onclick="siguiente()"/>
+        <input align="center" type="button" id="final" value="final" onclick="final()"/>
+        <br>
+       
+        <!-- CON ESTA FUNCION ABRIMOS UNA VENTANA SECUNDARIA DE 500X500 EN LA QUE SE VISUALIZA LA IMAGEN ACTUAL
+        GRACIAS AL GETELEMENTBYID -->
+        <script>        
+        //Laura: botón derecho--> format. ¿Por qué parte del javascript está aquí y parte en el .js?    
+        function abreVentana(){
+        var ventanaHijo = window.open("Secundaria.html", "width=500,height=500");
+        ventanaHijo.valor= document.getElementById('img').src;   
+}
+        </script>
+        <br><br>
+        <!-- Laura: pido abrir la ventana al hacer click sobre la imagen
+        BOTON PARA QUE SE EJECUTE LA FUNCIÓN Y SE PUEDA VER LA IMAGEN-->
+        <input type="button" id="enviar" value="Ver foto en grande" onclick="abreVentana()">
+    </body>
+</html>

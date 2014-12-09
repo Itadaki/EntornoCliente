@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 16-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Desarrolla una página html y un script javscript para simular una calculadora muy simple en
+base a que cada uno de los botones de la calculadora sea un botón de un formulario y el visor
+sea un campo de tipo "text". Cuando se pulse un botón, se ejecutará una función que
+almacena en una variable de tipo cadena el valor u operador de ese botón, y su resultado se
+calcula mediante el método "eval()" solo cuando se pulse el botón "=".
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body{
+                text-align: center;
+                background-color: ghostwhite;
+            }
+            #calculadora{
+                background-color: aliceblue;
+                border: solid;
+                border: solid 1px black;
+            }
+            #campo{
+                width: 100%;
+                text-align: right;
+            }
+            .number{
+                color: green;
+            }
+            .op{
+                color: red;
+            }
+            input{
+                height: 30px;
+                width: 30px;
+            }
+            table, td{
+                text-align: center;
+
+                padding: 5px;
+            }
+            td{
+                border: solid 1px lightgray;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Calculadora</h1>
+            <table id="calculadora" align="center">
+                <tr>
+                    <td colspan="4"><input type="text" name="campo" disabled value="" id="campo"/></td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="9" class="number" onclick="escribir(9)" /> </td>
+                    <td> <input type="button" value="8" class="number" onclick="escribir(8)" /> </td>
+                    <td> <input type="button" value="7" class="number" onclick="escribir(7)" /> </td>
+                    <td> <input type="button" value="/" class="op" onclick="escribir('/')" /> </td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="6" class="number" onclick="escribir(6)" /> </td>
+                    <td> <input type="button" value="5" class="number" onclick="escribir(5)" /> </td>
+                    <td> <input type="button" value="4" class="number" onclick="escribir(4)" /> </td>
+                    <td> <input type="button" value="*" class="op" onclick="escribir('*')" /> </td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="3" class="number" onclick="escribir(3)" /> </td>
+                    <td> <input type="button" value="2" class="number" onclick="escribir(2)" /> </td>
+                    <td> <input type="button" value="1" class="number" onclick="escribir(1)" /> </td>
+                    <td> <input type="button" value="-" class="op" onclick="escribir('-')" /> </td>
+                </tr>
+                <tr>
+                    <td> <input type="button" value="0" class="number" onclick="escribir(0)" /> </td>
+                    <td> <input type="button" value="C" class="op" onclick="limpiar()" /> </td>
+                    <td> <input type="button" value="=" class="op" onclick="calcular()" /> </td>
+                    <td> <input type="button" value="+" class="op" onclick="escribir('+')" /> </td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript">
+            function escribir(caracter) {
+                var s = document.getElementById('campo').value;
+                s += caracter;
+                document.getElementById('campo').value = s;
+            }
+            function limpiar() {
+                document.getElementById('campo').value = '';
+            }
+            function calcular() {
+                var s;
+                var calculo;
+                try {
+                    s = document.getElementById('campo').value;
+                    calculo = eval(s);
+                } catch (err) {
+                    calculo = '';
+                }
+                document.getElementById('campo').value = calculo;
+            }
+        </script>
+    </body>
+</html>

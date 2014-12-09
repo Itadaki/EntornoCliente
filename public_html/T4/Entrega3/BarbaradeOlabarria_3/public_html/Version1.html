@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+#Autor = Bárbara de Olabarria
+#Fecha = 14-nov-2014
+#Licencia = gpl30
+#Versión=1.0
+#Descripción= HTML y script Javascript para galería de imágenes
+-->
+<!--
+Copyright (C) 2014 Bárbara de Olabarria
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h1{
+                text-align: center;
+            }
+            table{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var imagenes = new Array("img/Img0.gif", "img/Img1.gif", "img/Img2.gif", "img/Img3.gif");
+            var index;
+            /** 
+             * Función para el botón de primera foto
+             * */
+            function Primera() {
+                index = 0;
+                document.getElementById("imgActual").src = imagenes[index];
+
+            }
+            ;
+            /** 
+             * Función para el botón de anterior foto
+             * */
+            function Anterior() {
+                index--;
+                if (index >= 0 && index <= 3) {
+                    document.getElementById("imgActual").src = imagenes[index];
+
+                }
+                //Laura: y sino cambiar el valor de index solo funciona la primera vuelta
+                else if (index === -1) {
+                    document.getElementById("imgActual").src = imagenes[3];
+                }
+            }
+/** 
+             * Función para el botón de siguiente foto
+             * */
+            //Laura: en firebug sale ReferenceError: Siguente is not defined
+            function Siguiente() {
+                index++;
+                if (index >= 0 && index <= 3) {
+                    document.getElementById("imgActual").src = imagenes[index];
+
+                }
+                else if (index === 4) {
+                    //Laura: y sino cambiar el valor de index solo funciona la primera vuelta
+                    document.getElementById("imgActual").src = imagenes[0];
+                }
+            }
+            ;
+            /** 
+             * Función para el botón de ultima foto
+             * */
+            function Ultima() {
+                index = 3;
+                document.getElementById("imgActual").src = imagenes[index];
+            }
+            ; //Laura: y este ;?
+            //Laura: esto sólo abre una ventana vacia
+            function abreVentana() {
+                var ventanaImagen = window.open('', 'Nueva Ventana', 'width=500,height=500');
+                ventanaImagen.document.innerHTML = "<img src='' id='imgActual' alt='imagen actual'>";
+            }
+            //Laura: la url no se pone a mano, se saca con location
+        </script>
+        <h1>Visor de imágenes</h1>
+        <hr>
+        <div>
+            <table>
+                <tr>
+                    <td colspan="4"><input type="text" value="http://localhost:8383/BarbaradeOlabarria_3/Version1.html"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><img src="" id="imgActual" alt="imagen actual" onclick="abreVentana()"></td> 
+                </tr>
+                <tr>
+                    <td><img src="img/flecha_izda.gif" id="imgPrimera" alt="Primera" onclick="Primera()"></td>
+                    <td><img src="img/flecha_izda.gif" id="imgAnterior" onclick="Anterior()" alt="Anterior"></td>
+                    <td><img src="img/flecha_dcha.gif" id="imgSiguiente" onclick="Siguente()" alt="Siguiente"></td>
+                    <td><img src="img/flecha_dcha.gif" id="imgUltima" onclick="Ultima()" alt="última"></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+    </body>
+</html>

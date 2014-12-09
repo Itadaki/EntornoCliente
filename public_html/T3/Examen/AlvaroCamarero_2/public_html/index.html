@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+$Autor=Alvaro Camarero Barrio
+Fecha=17-oct-2014
+Licencia=3.0
+Version=1.0
+Descripcion= en el documento html llamaremos a la funcion Laura: descripción del contenido de este html
+-->
+<!--
+Copyright (C) 2014 Alvaro Camarero Barrio
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type ="text/javascript" src="examen.js"> </script>
+
+        <script type ="text/javascript">
+            //Laura: esto en una función en el archivo examen.js y la llamas aquí
+            var fecha = new Date();
+
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1;
+            var año = fecha.getFullYear();
+            
+            alert("su fecha actual es : \n" + dia + " / " + mes + " / " + año);
+            
+            //Laura: te has complicado mucho
+            var fechaUnix = new Date(1970, 0, 1);
+            var unDia = new Date(1970, 0, 2);
+            var milisegDia = unDia - fechaUnix;
+            alert(milisegDia);
+            var miliseg90dias = (milisegDia*90);
+            alert(miliseg90dias);
+ 
+            //Laura: has mezclado fecha con número, puedes operar si los 2 son fechas o los 2 
+            //Laura: prueba new Date(fecha.getTime()+ miliseg90dias);
+            var fechaComision = new Date(fecha+ miliseg90dias);
+
+            //Laura: el formato de la fecha DD/MM/YYYY
+            alert(fechaComision);
+
+
+
+        </script>
+        <div>TODO write content</div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nueva ventana</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form id="formulario2">
+            <input type="text" size="100"  id="datos" value=""/>
+        </form>
+        <input type="Button" value="Pasar" onclick="pasar()"/>
+        <script type="text/javascript">
+            window.onload = escribir;
+            function escribir() {
+                document.getElementById('datos').value = swap;
+            }
+            function pasar() {
+                var datos = document.getElementById('datos').value;
+                window.opener.document.getElementById('resultado').value = datos;
+            }
+        </script>
+    </body>
+</html>
+

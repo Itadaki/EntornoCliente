@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script JavaScript para realizar lo siguiente:
+a. Aprovechando las propiedades “text” y “value”, desarrollar un select en el que
+los elementos se puedan “subir” o “bajar” de la lista al pulsar en un botón.
+b. Añade los estilos que más te gusten.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <select id="lista" size="6">
+            <option selected>11111</option>
+            <option>22222</option>
+            <option>33333</option>
+            <option>44444</option>
+            <option>55555</option>
+            <option>66666</option>
+        </select>
+        <br>
+        <input type="button" value="Subir" onclick="mover(-1)"/>
+        <input type="button" value="Bajar" onclick="mover(1)"/>
+        <script type="text/javascript">
+            /**
+             * @description Intercamcia el elemento seleccionado con uno n posiciones arriba o abajo
+             * @param {Integer} posicion La posicion relativa hacia donde se mueve (+ o -)
+             */
+            function mover(posicion) {
+                var lista = document.getElementById('lista');
+                var indice = lista.selectedIndex;
+                var actual = lista.options.item(indice);
+                var movido = lista.options.item(indice + posicion);
+                var swap = actual.text;
+                actual.text = movido.text;
+                movido.text = swap;
+                lista.selectedIndex = indice + posicion;
+            }
+        </script>
+    </body>
+</html>

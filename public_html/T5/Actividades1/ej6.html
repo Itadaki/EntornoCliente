@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Modifica el ejercicio 5 de manera que:
+a. Aparezca un listado de los SO formado por casillas check junto al listado de
+productos software.
+b. Cuando el usuario seleccione un producto software, automáticamente se debe de
+activar la casilla del SO al que está asociado.
+c. Debes controlar que al desmarcar casillas de productos software se desmarque la
+casilla del SO si ya no hay ningún producto software seleccionado que esté
+asociado a ese SO.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <table border="0" >
+            <tr>
+                <td>
+                    Productos
+                    <table border="0" id="sw">
+                        <tr>
+                            <td>IE para Windows</td>
+                            <td><input type="checkbox" name="ieWin" value="Internet Explorer para Windows" disabled/></td>
+                        </tr>
+                        <tr>
+                            <td>IE para Mac</td>
+                            <td><input type="checkbox" name="ieMac" value="Internet Explorer para Mac" disabled /></td>
+                        </tr>
+                        <tr>
+                            <td>FF para Windows</td>
+                            <td><input type="checkbox" name="ffWin" value="Firefox para Windows" disabled /></td>
+                        </tr>
+                        <tr>
+                            <td>FF para Mac</td>
+                            <td><input type="checkbox" name="ffMac" value="Firefox para Mac" disabled /></td>
+                        </tr>
+                        <tr>
+                            <td>FF para Linux</td>
+                            <td><input type="checkbox" name="ffLin" value="Firefox para Linux" disabled /></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    Sistema Operativo
+                    <table border="0" id="hw">
+                        <tr>
+                            <td>Windows</td>
+                            <td><input type="checkbox" name="Win" value="Windows" onclick="enableDisable('Win')"/></td>
+                        </tr>
+                        <tr>
+                            <td>Mac</td>
+                            <td><input type="checkbox" name="Mac" value="Mac" onclick="enableDisable('Mac')"/></td>
+                        </tr>
+                        <tr>
+                            <td>Linux</td>
+                            <td><input type="checkbox" name="Lin" value="Linux" onclick="enableDisable('Lin')"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+            function enableDisable(SO) {
+                var checks = document.getElementById('sw').getElementsByTagName('input');
+                for (var i = 0; i < checks.length; i++) {
+                    if (checks[i].type === 'checkbox' && checks[i].name.indexOf(SO) !== -1) {
+                        checks[i].disabled = !checks[i].disabled;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

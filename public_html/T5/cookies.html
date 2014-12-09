@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 01-dic-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <script type="text/javascript">
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) === ' ')
+                        c = c.substring(1);
+                    if (c.indexOf(name) !== -1)
+                        return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+            function checkCookie() {
+                var username = getCookie("username");
+                if (username !== "") {
+                    alert("Welcome again " + username);
+                } else {
+                    username = prompt("Please enter your name:", "");
+                    if (username !== "" && username !== null) {
+                        setCookie("username", username, 365);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body><input type="button" name="chequeaCookie"
+                 value="Chequear las cookies"
+                 onclick="checkCookie();">
+    </body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script JavaScript para realizar lo siguiente:
+a. Desarrolla un formulario con dos select
+b. El primer select debe mostrar un listado de continentes.
+c. El segundo select mostrará un listado de ciudades.
+d. Las ciudades mostradas en el segundo select deben ir cambiando para ser las
+correspondientes al continente que el usuario va seleccionando en el primer
+select.
+e. Añade los estilos que más te gusten.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <table>
+            <tr>
+                
+            </tr>
+        </table>
+        Continente:<select id="continente" onchange="cambiar(this)" ></select><br>
+        Ciudad:<select id="ciudad" disabled>
+        </select>
+        <script type="text/javascript">
+            var continentes = ['Europa', 'América'];
+            var ciudades = [
+                ['Madrid', 'París', 'Londres', 'Berlín', 'Lisboa'],
+                ['Los Ángeles', 'Washington', 'Miami']
+            ];
+
+            function cambiar(select) {
+                var ciudad = document.getElementById('ciudad');
+                ciudad.disabled = false;
+                while(ciudad.options.length > 0){
+                    ciudad.options.remove(0);
+                }
+                var index = select.selectedIndex;
+                for (var i = 0; i < ciudades[index].length; i++) {
+                    ciudad.options.add(new Option(ciudades[index][i],ciudades[index][i]));
+                }
+            }
+
+            function setContinentes() {
+                var continente = document.getElementById('continente');
+                for (var i = 0; i < continentes.length; i++) {
+                    continente.options.add(new Option(continentes[i],''));
+                }
+                continente.selectedIndex = -1;
+            }
+            window.onload = setContinentes;
+        </script>
+    </body>
+</html>

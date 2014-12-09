@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 16-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página web y un script javascript que presente un reloj en un campo de tipo
+"text" en pantalla. Evidentemente, el reloj debe actualizarse adecuadamente cada segundo
+sin ocupar el 100% del tiempo del procesador. Consulta la función setInterval() que te puede
+ser de utilidad.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body{
+                text-align: center;
+                background-color: darkseagreen;
+            }
+        </style>
+        <script type="text/javascript">
+            function getTime() {
+                var h = new Date().getHours();
+                var m = new Date().getMinutes();
+                var s = new Date().getSeconds();
+                document.getElementById('h').innerHTML = ((h < 10) ? '0' : '') + h;
+                document.getElementById('m').innerHTML = ((m < 10) ? '0' : '') + m;
+                document.getElementById('s').innerHTML = ((s < 10) ? '0' : '') + s;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Reloj</h1>
+            <table align="center">
+                <tr>
+                    <td id="h">00</td>
+                    <td class="separador">:</td>
+                    <td id="m">00</td>
+                    <td class="separador">:</td>
+                    <td id="s">00</td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript">
+            setInterval(function () {
+                getTime();
+            }, 1000);
+
+        </script>
+    </body>
+</html>

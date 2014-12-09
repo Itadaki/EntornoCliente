@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 21-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <form action="URL" method="post" id="formulario" 
+              onsubmit="return validaCheck()">
+            !Vacio: <input type="text" id="campo" value="" /> <input type="button" value="Validar" onclick="validacion()" /> <br>
+            Numero <input type="text" id="numero" value="" /><input type="button" value="Validar" onclick="validaNum()" /><br>
+            Fecha <input type="text" id="dia" value="30" />
+            <input type="text" id="mes" value="12" />
+            <input type="text" id="ano" value="1990" /><input type="button" value="Validar" onclick="validaFecha()" /><br>
+            Check <input type="checkbox" id="chk" value="ON" /><input type="button" value="Validar" onclick="validaCheck()" /><br>
+            <input type="submit" value="enviar" />
+        </form>
+        <script type="text/javascript">
+            function validar(){
+                if(validacion() && validaNum() && validaFecha() && validaCheck()){
+                    return true;
+                }
+                return false;
+            }
+            function validacion() {
+                valor = document.getElementById("campo").value;
+                if (valor === null || valor.length === 0) {
+                    alert("El campo no puede ser vacío");
+                    return false;
+                }
+                return true;
+            }
+            function validaNum() {
+                valor = document.getElementById("campo").value;
+                if (!isFinite(valor)) {
+                    alert("El campo tiene que ser numérico");
+                    return false;
+                }
+                return true;
+            }
+            function validaFecha() {
+                var dia = document.getElementById("dia").value;
+                var mes = document.getElementById("mes").value;
+                var ano = document.getElementById("ano").value;
+                var fecha = new Date(ano, mes, dia);
+                if (!isFinite(fecha)) {
+                    alert("Fecha erronea");
+                    return false;
+                }
+                return true;
+            }
+            function validaCheck() {
+                var elemento = document.getElementById("chk");
+                if (!elemento.checked) {
+                    alert("Tienes que marcar el check");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

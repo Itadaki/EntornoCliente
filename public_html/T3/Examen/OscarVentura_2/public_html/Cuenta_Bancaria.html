@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<!--
+Autor=oscar Ventura 
+Fecha=17-oct-2014
+Licencia=gpl30
+Version=1.0
+Descripcion= Programa que solicite el número de cuenta bancaria al ususario, se lo muestra detallado (entidad, sucursal, dígito de control y nº de cuenta) y le informa la fecha en la que deberá
+             pagar comisiones.
+-->
+
+<!--
+Copyright (C) 2014 Oscar Ventura Manzanares
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <script type="text/javascript" src="Cuenta_Bancaria.js"></script>
+        <script type="text/javascript" src="Cuenta_Bancaria.js"> comision();</script>
+        <script type="text/javascript">
+            //Laura; esto en una función, ¿y para qué entonces la función cuenta?
+            alert("introduzaca el nº de cuenta en este formato: entidad - oficina - DC - nº cuenta (separando por guiones)");
+            var cuentas = prompt("numero de cuenta");
+            var cuentaa = cuentas.split("-");
+            //Laura: 1234-5678-98-0123456789-9999,cccc-5678-bb-0123456789 las pasa como correctas
+            //Laura: será si es !=
+            if ((cuentaa[0].length > 4) || (cuentaa[0].length < 4) && cuentaa[0] === 0) {
+                alert("deben ser 4 números y mayor ");
+                system.out.print(0); //Laura: Oscar estamos en javascript no JAVA
+            }
+            if ((cuentaa[1].length > 4) || (cuentaa[1].length < 4)) {
+                alert("deben ser 4 números");
+                
+                system.out.print(0);
+            }
+            if ((cuentaa[2].length > 2) || (cuentaa[2].length < 2)) {
+                alert("deben ser 2 números");
+                system.out.print(0);
+            }
+            if ((cuentaa[3].length > 10) || (cuentaa[3].length < 10)) {
+                alert("deben ser 10 números");
+                system.out.print(0);
+            }
+
+            else {
+                alert("su número de cuenta es: " + cuentaa[0] + "-" + cuentaa[1] + "-" + cuentaa[2] + "-" + cuentaa[3]);
+            }
+            comision(); //Laura: ¿Cuántas veces llamas a comisión?
+        </script> 
+
+
+
+    </body>
+</html>
+

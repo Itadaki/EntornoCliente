@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Autor = Félix Martínez Álvaro
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = HTML de la ventana Secundaria de la version_1
+-->
+<!--
+Copyright (C) 2014 Félix Martínez Álvaro
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript"></script>
+        <style>
+            table, tr, td{
+                border: 1px black solid;
+            }
+            #visualizarURL{
+
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>URL</td>
+                <td><input type="text" id="visualizarURL" value=""/></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><div id="imagen"></div></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="button" id="cerrar" value="cerrar Ventana" onclick="cerrarWin()"/></td>
+            </tr>
+        </table>
+
+
+        <script type="text/javascript">
+
+            window.onload = cargarFunciones;
+            //Laura: mejor en un fichero .js
+            function cargarFunciones() {
+                /**
+                 * Descripcion: funcion que carga las funciones visualizarImg y urlPagina
+                 * @method
+                 * @param {} 
+                 * @returns {}
+                 */
+                visualizarImg();
+                urlPagina();
+            }
+            function visualizarImg() {
+                 /**
+                 * Descripcion: funcion que visualiza la imagen actual
+                 * @method
+                 * @param {} 
+                 * @returns {}
+                 */
+                document.getElementById("imagen").innerHTML = valor;
+            }
+
+            function urlPagina() {
+                 /**
+                 * Descripcion: funcion que visualiza la URL de la pagina secundaria
+                 * @method
+                 * @param {} 
+                 * @returns {}
+                 */
+
+                var url = location.href;
+                document.getElementById("visualizarURL").value = url;
+            }
+
+            function cerrarWin() {
+                 /**
+                 * Descripcion: funcion que cierra la pagina
+                 * @method
+                 * @param {} 
+                 * @returns {}
+                 */
+
+                window.close();
+            }
+        </script>
+    </body>
+</html>

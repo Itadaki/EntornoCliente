@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 06-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Copia la página y script del ejercicio 6 y modifícalo para que al abrir la página nos muestre:
+a. Fecha: DD/MM/YYYY Hora: HH:MM:SS
+<!--
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejercicio 7 - Actividades 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="f();" />
+        <script type="text/javascript" src=""></script>
+        <script type="text/javascript">
+            function f() {
+                var hoy = new Date();
+                var y = hoy.getFullYear();
+                var m = hoy.getMonth() + 1;
+                var d = hoy.getUTCDate();
+                var h = hoy.getHours();
+                var mt = hoy.getMinutes();
+                var s = hoy.getSeconds();
+                alert(
+                        "Fecha: " + format(d) + "/" +
+                        format(m) + "/" + y +
+                        " Hora: " + format(h) + ":" +
+                        format(mt) + ":" + format(s)
+                        );
+            }
+            function format(n) {
+                return ((n < 10) ? "0" : "") + n;
+            }
+        </script>
+    </body>
+</html>

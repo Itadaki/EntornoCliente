@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 30-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Descárgate del aula virtual los archivos UsoNavigator.html y navigator.js , pruébalo y añade
+comentarios explicativos en el script de lo que está haciendo. ¿Cuál es la utilidad del script?
+Puesto que es un script anticuado vamos a modificarlo o realizar uno nuevo que haga lo
+siguiente:
+d. Debes comprobar que el navegador sea Firefox, o Chrome y sólo las versiones que
+tienes instaladas.
+e. El SO tiene que ser Windows de 64 bits
+f. Si se cumplen estas dos condiciones remplazarás la URL por la de una página html
+en la que se informe al usuario de que la versión del navegador y plataforma es
+soportada.
+g. Si no se cumplen las condiciones remplazarás la URL por la de una página html en la
+que se informe al usuario de que la versión de navegador y plataforma no es
+soportada
+h. Consulta http://www.useragentstring.com/pages/useragentstring.php para saber cómo
+son los user agent de los navegadores que tienes que identificar.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title> Ejemplo del Objeto navigator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="navigator.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            var userOS = getOS();
+            var browserName = getBrowserName();
+            var browserVersion = getBrowserVersion();
+
+            if (((browserName === "Chrome" && browserVersion === 32) || (browserName === "Chrome" && browserVersion === 38)) && userOS === "Win64"){
+                location.replace("soportado.html");
+            }
+            else {
+                location.replace("nosoportado.html");
+            }
+
+        </script>
+
+    </body>
+</html>

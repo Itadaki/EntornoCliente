@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html con un formulario y un script Javascrip para
+realizar lo siguiente:
+oUna lista desplegable con 3 valores de colores
+oUn botón tal que al pulsarlo muestre en un alert el valor del la lista
+desplegable que está seleccionado.
+oConsulta en http://www.w3schools.com/jsref/default.asp las
+propiedades de DOM select y DOM option a las que debes acceder
+para obtener el valor seleccionado.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <select id="listado">
+                <option>Rojo</option>
+                <option>Verde</option>
+                <option>Azul</option>
+            </select> <br>
+            <input type="button" value="Alerta" onclick="alerta()" />
+        </form>
+        <script type="text/javascript">
+            function alerta(){
+                var texto = document.getElementById("listado").value;
+                alert(texto);
+            }
+            
+        </script>
+    </body>
+</html>

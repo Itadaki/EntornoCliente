@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 16-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página web y un script javascript para que en la página web aparezca una
+imagen y debajo de esta imagen debe aparecer un botón de un formulario con la leyenda
+"Cambia". Cuando el usuario pulse este botón, la imagen debe cambiar a otra, con la
+peculiaridad de que al volver a pulsarlo, reaparezca la primera. Se pide que la
+implementación se desarrolle en una sola función.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Cambio de Imágen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body{
+                text-align: center;
+                background-color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Cambio de imagen</h1>
+            <input type="button" value="Cambiar la imagen" onclick="cambiar()"/><br><br>
+            <img src="obrero.gif" alt="img" id="cambio"/>           
+        </div>
+        <script type="text/javascript">
+            var b = true;
+            function cambiar() {
+                var img = document.getElementById('cambio');
+                if (b) {
+                    img.src = 'tweety.gif';
+                }
+                else {
+                    img.src = 'obrero.gif';
+                }
+                b = !b;
+            }
+        </script>
+    </body>
+</html>

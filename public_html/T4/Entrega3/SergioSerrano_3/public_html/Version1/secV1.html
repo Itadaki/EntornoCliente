@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = ventana secundaria de la version 1;
+
+-->
+<!--
+Copyright (C) 2014 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #grande{
+            width: 450px;
+            height: 450px;
+        }
+        #url{
+            width: 470px;
+        }
+    </style>
+  </head>
+  <body>
+      <input type="text" id="url">
+      <img id="grande" src="" alt="">
+      <script>
+          /**
+           * 
+           * @description Obtiene el src de la imagen de la ventana principal y lo establece en la imagen de la secundaria. 
+           *                Hace lo mismo con el alt y además inserta la url de la pagina en el campo de texto.
+           */
+          function cargarImagenURL(){
+              document.getElementById('grande').src=window.opener.document.getElementById('imagen').src;
+              document.getElementById('grande').alt=window.opener.document.getElementById('imagen').alt;
+              document.getElementById('url').value= document.URL;
+          }
+          window.onload(cargarImagenURL());//ejecuta la funcion cuando se ha terminado de cargar la pagina.
+      </script>
+  </body>
+</html>

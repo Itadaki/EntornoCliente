@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Autor = Javier Oltra Riera
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Examen tema 4 version 1.
+-->
+<!--
+Copyright (C) 2014 Javier Oltra Riera
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--CopyRight Javier Oltra Riera-->
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        div{
+            text-align: center;
+            border: 2px solid darkorange;
+        }
+        div #imagen{
+            height: 75px;
+            width: 75px;
+        }
+        a{
+            border: 2px solid black;
+        }
+    </style>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+      <div>
+          <h1>Visor de imagenes</h1>
+          <!--Campo de texto -->
+          URL:<input id="texto" type="text" name="url" value=""/><br><br>
+          <!--Imagen -->
+          <img id="imagen" src="img/Img0.gif" onclick="imgGrande()"/><br><br>
+          <!--Botones, cada uno con la funcion en su evento. -->
+          <input type="button" value="<<" onclick="primera();">
+          <input type="button" value="<" onclick="anterior();">
+          <input type="button" value=">" onclick="siguiente();">
+          <input type="button" value=">>" onclick="ultima();">
+      </div>
+  </body>
+</html>

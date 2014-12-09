@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html;charset=utf-8">
+        <title>Objeto Navigator</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //userAgent (agente de usuario o cliente) es la cabecera 
+            //que incluye el navegador en la petición http para su identificación
+            alert("Agente de usuario: " + navigator.userAgent + "<br>");
+            //appCodeName es el nombre interno del navegador
+            alert("Código de Navegador: " + navigator.appCodeName + "<br>");
+            //appName es el nombre oficial del navegador
+            alert("Navegador: " + navigator.appName + "<br>");
+            //appVersion es la versión del navegador (del motor de renderizado)
+            alert("Versión: " + navigator.appVersion + "<br>");
+            if (navigator.javaEnabled()){
+                alert("El navegador Sí está preparado para soportar los Applets de Java")
+            }
+            else{
+                alert("El navegador NO está preparado para soportar los Applets de Java")
+            }
+        </script>
+    </body>
+</html>

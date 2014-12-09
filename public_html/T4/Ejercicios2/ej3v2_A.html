@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 30-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = ej3 alternativo - comunicacion en 2 fases
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejemplo de comunicación</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form id="formulario1">
+            <input type="Button" value="Nueva Ventana" onclick="abrir()">
+            <input type="Button" value="Enviar contenido" onclick="enviar()">
+            <input type="text" size="100" id="resultado" value="Comunicación entre ventanas"/><br>
+            <script type="text/javascript">
+                var ventana;
+                function abrir(){
+                    ventana = window.open('ej3v2_B.html', 'Ventana', 'width=200, height=200');
+                }
+                function enviar(){
+                    var v = document.getElementById('resultado').value;
+                    ventana.document.getElementById('datos').value = v;
+                }
+            </script>
+        </form>
+    </body>
+</html>

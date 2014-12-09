@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 10-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script javascript para realizar lo siguiente:
+a. Solicita al usuario el nombre de 3 ciudades
+b. Para cada ciudad solicita al usuario la temperatura del viernes, sábado y domingo
+c. Almacena los datos en un array de dos dimensiones
+d. Después recorre el array, calcula la temperatura media del fin de semana para cada
+ciudad y muéstraselo al usuario.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>T3 - Actividades 2 - Ejercicio 5 - Diego Rodríguez</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="ejecutar();" />
+        <script type="text/javascript">
+            function ejecutar() {
+                var entrada = prompt("Ciudades separadas por ','");
+                var ciudades = entrada.split(','); //Creación del array con los nombres
+                var temperaturas = new Array(); //Creación del array con las temperaturas
+                //Almacenar las temperaturas
+                for (var i = 0; i < ciudades.length; i++) {
+                    var temp = prompt("Temperaturas en " + ciudades[i] + " se paradas por ','");
+                    temperaturas.push(temp.split(','));
+                }
+                //Calcular las medias
+                for (var i = 0; i < temperaturas.length; i++) {
+                    var suma = 0;
+                    var longitud = temperaturas[i].length;
+                    for (var j = 0; j < temperaturas[i].length; j++) {
+                        if (isFinite(temperaturas[i][j])) { //Es un numero
+                            suma += parseInt(temperaturas[i][j]);
+                        }
+                        else{ //No es un numero
+                            longitud--; //Reducir 1 la cantidad de numeros para la media
+                        }
+                    }
+                    var media = suma / longitud;
+                    alert("Temperatura media de " + ciudades[i] + ": " + media.toFixed(1));
+                }
+            }
+        </script>
+    </body>
+</html>

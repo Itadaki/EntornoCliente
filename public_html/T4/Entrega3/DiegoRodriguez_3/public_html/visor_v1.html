@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 14-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Actividad a Entregar 3 - Visor de imágenes
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Visor de imágenes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            table{text-align:center;margin:0 auto;}
+            #url{width:130px;}
+            input{width:40px;}
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td colspan="4">
+                    URL: <input type="text" name="" value="" id="url"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="height:150px;">
+                    <img src="img/Img0.gif" alt="Imagen" id="imagen" onclick="abrirVentana()" />
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="|<" onclick="principio()"/></td>
+                <td><input type="button" value="<<" onclick="retroceder()"/></td>
+                <td><input type="button" value=">>" onclick="avanzar()"/></td>
+                <td><input type="button" value=">|" onclick="fin()"/></td>
+            </tr>
+        </table>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript">
+            window.onload = mostrarURL;
+        </script>
+    </body>
+</html>

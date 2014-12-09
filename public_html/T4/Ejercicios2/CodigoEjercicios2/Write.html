@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Escritura en documento</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            // El siguiente codigo se ejecuta a medida que es leido
+            alert ('Voy a escribir en el documento');
+            document.write ('Esto se visualiza en el documento');
+            document.write ('<br><center><b>Las etiquetas HTML tambien se escriben</b></center>');
+            alert ('He escrito en el documento');
+   
+            //La funcion se ejecuta bajo peticion
+            function Escribe(){
+                alert('Voy a intentar escribir en el documento');
+                document.write('Esto se escribe en <b>otro</b> documento');
+                document.write('<br><center><b>Las etiquetas HTML tambien</b></center>');
+            } 
+            
+        </script>
+        <br> <br>
+        <form name="Miform" action="#" >
+            <br>
+            <!-- El codigo HTML se interpreta secuencialmente-->
+            <p>Pulse para intentar volver a escribir en el documento</p>
+            <br><br><input type="button" Value="Escribir" onClick="Escribe()">
+        </form>
+    </body>
+</html>

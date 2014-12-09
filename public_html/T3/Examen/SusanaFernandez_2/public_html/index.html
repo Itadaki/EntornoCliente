@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript">
+            //Laura: no funciona, faltan muchas validaciones, para un número correcto 12345-678-98-0123456789, me dice que es incorrecto
+            var numero = prompt("Indique un numero de cuenta con el formato ####-####-##-##########: ");
+
+            var num = numero.split("-");
+            var miFecha = new Date();
+            
+            if (isFinite(numero) && (numero.lenght == 23)) {
+
+                alert("Ha introducido correctamente su cuenta: " + num.join("-"));
+
+            }
+
+            else {
+                alert("La cuenta tiene que estar compuesta solo por numeros y contener 23 caracteres");
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

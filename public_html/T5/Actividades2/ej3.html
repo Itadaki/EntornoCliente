@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 21-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <form action="URL" method="post" id="formulario" 
+              onsubmit="return validar()">
+            !Vacio: <input type="text" id="campo" value="" /><br>
+            Numero <input type="text" id="numero" value="" /><br>
+            Fecha <input type="text" id="dia" value="29" />
+            <input type="text" id="mes" value="2" />
+            <input type="text" id="ano" value="2000" /><br>
+            Check <input type="checkbox" id="check" /><br>
+            <input type="submit" value="enviar" />
+        </form>
+        <script type="text/javascript">
+            function validar() {
+                if (validaVacio() && validaNum() && validaFecha() && validaCheck()) {
+                    return true;
+                }
+                return false;
+            }
+            function validaVacio() {
+                var valor = document.getElementById("campo").value;
+                if (valor === null || valor.length === 0) {
+                    alert("El campo no puede ser vacío");
+                    return false;
+                }
+                return true;
+            }
+            function validaNum() {
+                var valor = document.getElementById("numero").value;
+                if (!isFinite(valor) || valor === null || valor.length === 0) {
+                    alert("El campo tiene que ser numérico");
+                    return false;
+                }
+                return true;
+            }
+            function validaFecha() {
+                var expresion = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+                var fecha = '';
+                fecha += document.getElementById("dia").value + '/';
+                fecha += document.getElementById("mes").value + '/';
+                fecha += document.getElementById("ano").value;
+                if ((fecha.match(expresion)) && (fecha !== '')) {
+                    return existeFecha(fecha);
+                }
+                return false;
+            }
+            function existeFecha(fecha) {
+                var arr = fecha.split("/");
+                var day = arr[0];
+                var month = arr[1];
+                var year = arr[2];
+                //el dia 0 es el dia maximo que tiene el mes
+                var date = new Date(year, month, 0);
+                if (day > date.getDate()) {
+                    return false;
+                }
+                return true;
+            }
+            function validaCheck() {
+                var elemento = document.getElementById("check");
+                if (!elemento.checked) {
+                    alert("Tienes que marcar el check");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

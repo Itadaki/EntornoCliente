@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 09-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script Javascript que pida al usuario una serie de
+palabras y las almacene en un array. Posteriormente debes manipular el array para
+mostrar al usuario lo siguiente:
+a. La primera palabra ingresada por el usuario
+b. La última palabra ingresada por el usuario
+c. El número de palabras del array
+d. Todas las palabras ordenadas alfabéticamente
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>T3 - Actividades 2 - Ejercicio 2 - Diego Rodríguez</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="f();" />
+        <script type="text/javascript">
+            function f() {
+                var input = prompt("Palabras separadas por ','");
+                var palabras = input.split(',');
+                alert("Primera palabra: " + palabras[0]);
+                alert("Ultima palabra: " + palabras[palabras.length - 1]);
+                alert("Longitud del array: " + palabras.length);
+                palabras.sort();
+                alert(palabras.join(' - '));
+            }
+        </script>
+    </body>
+</html>

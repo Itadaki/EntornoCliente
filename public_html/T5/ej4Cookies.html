@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 21-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="" onsubmit="return validar()">
+            !Vacio: <input type="text" id="vacio" value="" required/><br>
+            Numero <input type="number" id="numero" value="" required/><br>
+            Fecha <input type="date" id="fecha" required/><br>
+            Check <input type="checkbox" id="check" required/><br>
+            <input type="button" value="validar" onclick="validar()" />
+            <input type="button" value="borrar" onclick="borrarCookies()"/>
+        </form>
+        <script type="text/javascript">
+
+            function validar() {
+                if (comprobar()) {
+                    guardarCookies();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function guardarCookies() {
+                var vacio = document.getElementById('vacio').value;
+                var numero = document.getElementById('numero').value;
+                var fecha = document.getElementById('fecha').value;
+                setCookie("vacio", vacio, 365);
+                setCookie("numero", numero, 365);
+                setCookie("fecha", fecha, 365);
+                console.log('creadas');
+            }
+            function borrarCookies() {
+                delete_cookie("vacio");
+                delete_cookie("numero");
+                delete_cookie("fecha");
+            }
+            function delete_cookie(name) {
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+
+            //validar las cosas no hechas en FF y rechazar si es IE
+            function comprobar() {
+                var userAgent = navigator.userAgent;
+                //Si es Chrome
+                if (userAgent.indexOf('Chrome') !== -1) {
+                    return true;
+                }
+                //Si es FF
+                else if (userAgent.indexOf('Firefox') !== -1) {
+                    return validaFecha();
+                }
+                //Si es otro
+                else {
+                    alert('navegador no soportado');
+                    return false;
+                }
+
+            }
+
+            function validaFecha() {
+                var expresion = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+                var fecha = document.getElementById("fecha").value;
+                if ((fecha.match(expresion)) && (fecha !== '')) {
+                    return existeFecha(fecha);
+                }
+                alert('nop');
+                return false;
+            }
+            function existeFecha(fecha) {
+                var arr = fecha.split("/");
+                var day = arr[0];
+                var month = arr[1];
+                var year = arr[2];
+                //el dia 0 es el dia maximo que tiene el mes
+                var date = new Date(year, month, 0);
+                if (day > date.getDate()) {
+                    alert('nop');
+                    return false;
+                }
+                return true;
+            }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) === ' ')
+                        c = c.substring(1);
+                    if (c.indexOf(name) !== -1)
+                        return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+            function checkCookie() {
+                var username = getCookie("username");
+                if (username !== "") {
+                    alert("Welcome again " + username);
+                } else {
+                    username = prompt("Please enter your name:", "");
+                    if (username !== "" && username !== null) {
+                        setCookie("username", username, 365);
+                    }
+                }
+            }
+            function showCookies() {
+                var arrCookie = document.cookie.split(';');
+                var s = "";
+                for (var i = 0; i < arrCookie.length; i++) {
+                    s += arrCookie[i] + '\n';
+                }
+                alert(s);
+            }
+        </script>
+    </body>
+</html>

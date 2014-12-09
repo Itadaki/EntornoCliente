@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 17-oct-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Examen, se pide un numero de cuenta, se comprueba que los datos sean
+                correctos y se le muestran al usuario;
+
+-->
+<!--
+Copyright (C) 2014 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="funcionesCuenta.js"></script>
+        <script>
+            //Laura: esto en una función en el fichero funcionesCuenta
+            var falloNumerico = true; // comprueba que cada parte de la cuenta son numeros 
+            var falloLongCad = true;
+            var falloLongPartes = true;
+            var i = 0;
+            //Laura: 123456-78-98-0123456789 esta cuenta me la da como correcta
+            do {
+                if (i > 0) {
+                    alert('Intento' + i + ' Los datos introducidos no son correctos\nVuelva a interntarlo');
+                }
+                // Ejemplo de numero de cuenta válido 1234-1234-12-1234567890
+                var nCuenta = prompt("Introduce un numero de cuenta en formato:\n  ####-####-##-##########");
+
+                comprobacionLongitudCadena();
+                var arrCuenta = nCuenta.split('-'); // divido la cadena en partes de un array, 
+                //                                  que me resulta mas sencillo para manejar los datos.
+
+                //Laura: los datos que se usen en las funciones hay que pasarlos siempre como parámetros
+                //Laura: las funciones deberían hacer return true o false, no modificar una variable global
+                comprobacionLongitudPartes();
+                comprobacionNumerica();
+
+                i++;
+            } while (falloNumerico || falloLongCad || falloLongPartes); //Laura: sigue cuando son true, pero en comprobación longitud pones false cuando la longitud es correcta
+
+            alert('Los datos introducidos son correctos:\n\nEntidad : ' + arrCuenta[0] + '\nOficina : ' + arrCuenta[1] + '\nDC : ' + arrCuenta[2] + '\nCuenta : ' + arrCuenta[3]);
+
+            fechaComisiones();
+        </script>
+    </head>
+    <body>
+        <h1>Cuenta Bancaria</h1>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!--
+Autor= Susana
+Fecha= 14-oct-2014
+Licencia= default
+Version= 1.0
+Descripcion= script para realizar un visor de imágenes.
+-->
+
+<!--
+Copyright (C) 2014 Susana
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var imagenes = new Array();
+            imagenes[0] = "Img0.gif";
+            imagenes[1] = "Img1.gif";
+            imagenes[2] = "Img2.gif";
+            imagenes[3] = "Img3.gif";
+
+            //Funcion para pasar a la imagen anterior
+            function anterior() {
+                //LAura: estás asignado a i la longitud menos1
+                for (var i = 0; i = imagenes.length; i--) {
+                    imagenes[i];
+                }
+
+            }
+            //Laura: estás generando bucles infinitos en esta función y la siguiente
+            //Funcion para pasar a la imagen siguiente
+            function siguiente() {
+                for (var i = 0; i = imagenes.length; i++) {
+                    imagenes[i];
+                }
+
+            }
+            //Funcion para ir a la primera imagen
+            function principio() {
+                imagenes[0];
+
+            }
+            //Funcion para ir a la ultima imagen
+            function ultima() {
+                imagenes[3];
+
+            }
+
+
+
+        //Laura: te da errores porque el id de los img es igual que los nombres de función
+        </script>
+
+        <img src="Img0.gif" name="img0" id="img0"><br>
+
+        <img src="flecha_izda.gif" id="principio" onclick="principio();">
+
+        <img src="flecha_izda.gif" id="anterior" onclick="anterior();">
+        <img src="flecha_dcha.gif" id="siguiente" onclick="siguiente();">
+        <img src="flecha_dcha.gif" id="ultima" onclick="ultima();">
+
+
+    </body>
+</html>

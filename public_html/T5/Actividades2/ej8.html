@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script JavaScript para realizar lo siguiente:
+a. Crea un formulario que muestre un listado de productos software para diferentes
+SO con casillas de check para poder seleccionarlos.
+b. En el formulario debe aparecer un botón de manera que al pulsarlo se informe al
+usuario de todos los productos que ha seleccionado.
+c. Añade los estilos que más te gusten.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form onsubmit="return comprobar();">
+            Mail <input type="email" value="email@ies.com" required/> <br>
+            DNI <input type="text" id="dni" value="53649793Q" required/><br> 
+            Telf <input type="tel" id="telf" value="918476638" required/><br> 
+            <input type="button" value="Comprobar" onclick="console.log(comprobar())"/>
+            <input type="submit" value="Enviar" />
+        </form>
+            <script type="text/javascript">
+            //validar las cosas no hechas en FF y rechazar si es IE
+            function comprobar() {
+                var userAgent = navigator.userAgent;
+                //Si es Chrome
+                if (userAgent.indexOf('Chrome') !== -1) {
+                    return true;
+                }
+                //Si es FF
+                else if (userAgent.indexOf('Firefox') !== -1) {
+                    return validar();
+                }
+                //Si es otro
+                else {
+                    alert('navegador no soportado');
+                    return false;
+                }
+
+            }
+            
+            function validar() {
+                if (validarDni() && validarTelf()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            //no me sale
+            function validarMail() {
+                var valor = document.getElementById("email").value;
+                var expresion = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (expresion.test(valor)) {
+                    return true;
+                }
+                return false;
+            }
+            function validarDni() {
+                var valor = document.getElementById("dni").value;
+                var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 
+                    'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 
+                    'H', 'L', 'C', 'K', 'E', 'T'];
+                if (!(/^\d{8}[A-Z]$/.test(valor))) {
+                    return false;
+                }
+                if (valor.charAt(8) !== letras[(valor.substring(0, 8)) % 23])
+                {
+                    return false;
+                }
+                return true;
+            }
+            function validarTelf() {
+                var valor = document.getElementById("telf").value;
+                if (!(/^\d{9}$/.test(valor))) {
+                    return false;
+                }
+                return true;
+            }
+
+        </script>    
+    </body>
+</html>

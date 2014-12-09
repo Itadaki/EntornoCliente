@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 06-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página web y un script que solicite una cadena de 
+texto y muestre un saludo (Buenos días, Buenas tardes o Buenas noches). 
+Debes gestionar la hora del día para saber si es por la mañana, 
+por la tarde o por la noche.
+<!--
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejercicio 9 - Actividades 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="f();" />
+        <script type="text/javascript" src=""></script>
+        <script type="text/javascript">
+            function f() {
+                var nombre = prompt("Tu nombre");
+                var hoy = new Date();
+                var h = hoy.getHours();
+                var s;
+                switch (h) {
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        s = "Buenas noches ";
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        s = "Buenos días ";
+                        break;
+                    default:
+                        s = "Buenas tardes ";
+                        break;
+                }
+                alert(s + nombre);
+            }
+        </script>
+    </body>
+</html>

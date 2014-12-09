@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 27-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una nueva versión del ejercicio del tema anterior en el que se realizaba una
+conversión de pesetas a euros, para que la cantidad convertida a euros se muestre en una
+nueva ventana. La nueva ventana debe ser no redimensionable e incluir un botón para
+cerrarla. Intenta solicitar la cantidad en pesetas mediante un campo de texto e incluir un
+botón para convertir en lugar de utilizar un alert.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>T4 - Actividades 2 - Ejercicio 5 - Diego Rodríguez</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="text" id="pesetas" value="666" />Pesetas
+        <input type="button" value="Convertir" onclick="convertir();" />
+        <script type="text/javascript">
+            function convertir() {
+                var pesetas = document.getElementById('pesetas').value;
+                var euros;
+                if (isFinite(pesetas) && pesetas >= 0) {
+                    euros = (pesetas / 166.386).toFixed(2) + '€';
+                } else {
+                    euros = "No es una cantidad valida!";
+                }
+                var ventana = window.open('ej5_B.html', 'Palabras', 'width=200, height=200, resizable=no');
+                ventana.euros = euros;
+                
+            }
+        </script>
+    </body>
+</html>

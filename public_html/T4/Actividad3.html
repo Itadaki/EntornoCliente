@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html con un formulario y un script Javascrip para
+realizar los siguiente:
+oUna lista desplegable con 4 opciones para ciudades
+oUn campo de texto inicialmente vacío
+oUn botón tal que al pulsarlo coja el valor seleccionado de la lista
+desplegable y lo muestre en el campo de texto.
+oUtiliza el método getElementById para acceder a los elementos.
+oConsulta en http://www.w3schools.com/jsref/default.asp las
+propiedades de DOM select y DOM option a las que debes acceder
+para obtener el valor seleccionado.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <select id="listado" multiple>
+                <option>Gijón</option>
+                <option>Santander</option>
+                <option>Zarautz</option>
+                <option>Madrid</option>
+            </select> <br>
+            <input type="text" id="texto" value="" /><br>
+            <input type="button" value="Get selección" onclick="cambio()" /><br>
+            <input type="button" value="Añadir a la lista (1)" onclick="add1()" /><br>
+            <input type="button" value="Añadir a la lista (2)" onclick="add2()" /><br>
+            <input type="button" value="Get selección multiple" onclick="multi()" />
+        </form>
+        <script type="text/javascript">
+            function cambio() {
+                var texto = document.getElementById("listado").value;
+                document.getElementById("texto").value = texto;
+            }
+            function add1() {
+                var texto = document.getElementById("texto").value;
+                var option = document.createElement("option");
+                var nodo = document.createTextNode(texto);
+                option.appendChild(nodo);
+                document.getElementById("listado").appendChild(option);
+            }
+            function add2() {
+                var texto = document.getElementById("texto").value;
+                var lista = document.getElementById("listado");
+                var option = document.createElement("option");
+                option.text = texto;
+                lista.add(option);
+            }
+            function multi() {
+                var arr = document.getElementById("listado").getElementsByTagName("option");
+                var s = "";
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].selected) {
+                        s += arr[i].value + " ";
+                    }
+                }
+                document.getElementById("texto").value = s;
+            }
+        </script>
+    </body>
+</html>

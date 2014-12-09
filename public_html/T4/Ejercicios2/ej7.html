@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 27-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html con dos botones “Reemplazar” y “Asignar” y un script javascript
+para probar los métodos assign y replace del objeto location cuando se pinche en estos
+botones. ¿Encuentras alguna diferencia entre estos dos métodos?
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>T4 - Actividades 2 - Ejercicio 7 - Diego Rodríguez</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="button" value="Reemplazar" onclick="reemplazar()"/> 
+        <input type="button" value="Asignar" onclick="asignar()"/>
+        <script type="text/javascript">
+            function asignar() {
+                location.assign("http://www.w3schools.com"); //SI es posible ir atras con el boton del historial
+            }
+            function reemplazar() {
+                location.replace("http://www.w3schools.com"); //NO es posible ir atras con el boton del historial
+            }
+        </script>
+    </body>
+</html>

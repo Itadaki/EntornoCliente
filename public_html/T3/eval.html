@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 02-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+<!--
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p id="demo">Parrafo</p>
+        <input type="button" value="Cambiar parrafo" onclick="myFunction()"/>
+        <script type="text/javascript">
+            var u = 0;
+            var hex = 255;
+            function myFunction() {
+                var x = 10;
+                var y = 20;
+                var a = eval("x * y") + "<br>";
+                var b = eval("2 + 2") + "<br>";
+                var c = eval("x + 17") + "<br>";
+                var res = a + b + c + u;
+                //alert(parseInt(hex,16));
+                sty = "background-color: rgb(" + hex + "," + hex + "," + hex +");";
+                document.getElementById("demo").innerHTML = res;
+                document.getElementById("demo").style = sty;
+                u++;
+                hex++;
+            }
+        </script>
+    </body>
+</html>

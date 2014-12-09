@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Version 1 del Examen. LAura: descripción de verdad
+
+-->
+<!--
+Copyright (C) 2014 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #imagen{
+                width: 150px;
+                height: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        
+            <a href='javascript:window.open("secV1.html","","width=500px,height=500px");'><img id="imagen" src="imagenes/Img0.gif" alt="Img0.gif"></a><br>
+            <input type="button" value="|<<" onclick="primera()">
+            <input type="button" value="<<" onclick="anterior()">
+            <input type="button" value=">>" onclick="siguiente()">
+            <input type="button" value=">>|" onclick="ultima()">
+        
+        <script>
+            var imagenes = new Array("Img0.gif","Img1.gif","Img2.gif","Img3.gif"); // array con todos los nombres de las imagenes.
+            var indice = 0;
+            
+            /**
+             * Laura: se pueden hacer algo más eficientes anterior y siguiente.
+             * @description Pasa a la imagen anterior restando 1 al indice, en caso de estar en la primera , establece indice a la ultima. Cambia el src y el alt de la imagen para ello.
+             */
+            function anterior(){
+                if(indice===0){
+                    indice=imagenes.length-1;
+                }
+                else{
+                    indice--;
+                }
+                document.getElementById('imagen').src = "imagenes/"+imagenes[indice];
+                document.getElementById('imagen').alt = imagenes[indice];
+            }
+            /**
+             * 
+             * @description Pasa a la siguiente imagen sumando a indice 1, en caso de estar en la ultima establece indice a 0. Cambia el src y el alt de la imagen para ello.
+             */
+            function siguiente(){
+                if(indice===imagenes.length-1){
+                    indice=0;
+                }
+                else{
+                    indice++;
+                }
+                document.getElementById('imagen').src = "imagenes/"+imagenes[indice];
+                document.getElementById('imagen').alt = imagenes[indice];
+            
+            }
+            /**
+             * 
+             * @description Establece el indice a 0 y pone la primera imagen.
+             */
+            function primera(){
+                document.getElementById('imagen').src = "imagenes/"+imagenes[0];
+                document.getElementById('imagen').alt = imagenes[0];
+                indice = 0;
+                
+            }
+            /**
+             * 
+             * @description Establece el indice al ultimo numero posible y pone la ultima imagen.
+             */
+            function ultima(){
+                document.getElementById('imagen').src = "imagenes/"+imagenes[imagenes.length-1];
+                document.getElementById('imagen').alt = imagenes[imagenes.length-1];
+                indice = imagenes.length-1;
+            }
+            
+        </script>
+    </body>
+</html>

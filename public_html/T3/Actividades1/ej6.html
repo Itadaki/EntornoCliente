@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 06-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Crea una página web y un script JavaScript para mostrar la hora actual en el momento de
+abrir la página web.
+a. Debes mostrar la hora en el formato HH:MM:SS
+b. Siempre debe de haber dos dígitos para la Hora, minutos y segundos, por lo que
+deberás gestionarlo de forma adecuada cuando tengas cantidades menores a 10.
+<!--
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejercicio 6 - Actividades 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="f();" />
+        <script type="text/javascript" src=""></script>
+        <script type="text/javascript">
+            function f() {
+                var hoy = new Date();
+                var h = hoy.getHours();
+                var m = hoy.getMinutes();
+                var s = hoy.getSeconds();
+                alert(format(h) + ":" + format(m) + ":" + format(s));
+            }
+            function format(n) {
+                return ((n < 10) ? "0" : "") + n;
+            }
+        </script>
+    </body>
+</html>

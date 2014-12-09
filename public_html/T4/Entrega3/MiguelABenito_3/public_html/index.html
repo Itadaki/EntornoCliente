@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Autor=Miguel A Benito
+Fecha=14-nov-2014
+Licencia=gpl30
+Version=1.0
+Descripcion= Html con visor de imagenes, 4 botones de control y la url de la propia pag en un input
+-->
+<!--
+Copyright (C) 2014 Elias Sánchez
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Entrega 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- cargo el javascript
+        -->
+        <script src="version1.js"></script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <!-- Laura: solo funciona la url
+                ejecuto la funcion url para asignar al input la url de la pag en texto por defecto   -->
+                <td colspan="4">URL: <input type="text" id="url" > <script> Url();</script>
+            </tr>
+            <tr>
+                <!--ejecuto la funcion Imagenes para crear el array con las imagenes y mostrar por defecto la 0 -->
+                <td colspan="4"><img id="mostrar"><script>Imagenes()</script>
+            </tr>
+            <tr>
+                <!-- botones que al pinchar ejecutan su funcion para moverse en el array de imagenes -->
+                <td><input type="button" id="primera" value="<<" onclick="Primera()">
+                <td><input type="button" id="atras" value="<" onclick="Atras()">
+                <td><input type="button" id="adelante" value=">" onclick="Adelante()">
+                <td><input type="button" id="ultima" value=">>" onclick="Ultima()">
+
+            </tr>
+        </table>
+
+
+
+    </body>
+</html>

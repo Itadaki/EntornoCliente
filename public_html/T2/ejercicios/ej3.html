@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 19-sep-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+<!--
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            var maxValue = Number.MAX_VALUE;
+            var minValue = Number.MIN_VALUE;
+            window.alert("Max value: " + maxValue);
+            alert("Min value: " + minValue);
+            alert("Valor especial: " + maxValue * 2);
+        </script>
+        <script>
+            var operando_1 =
+                    eval(prompt("Introduce el primer valor lógico (true o false):", true));
+            var operando_2 =
+                    eval(prompt("Introduce el segundo valor lógico (true o false):", true));
+            var resultado_logico = operando_1 && operando_2;
+            alert("Resultado: " + resultado_logico);
+        </script>
+        <script>
+            var countdown = prompt("Número: ");
+            while (countdown > 0) {
+                alert(countdown + "...");
+                countdown--;
+            }
+        </script>
+    </body>
+</html>

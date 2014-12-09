@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 10-oct-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página web que incluya un script JavaScript que:
+a. Solicite un número del Documento Nacional de Identidad,
+b. Mientras el dato proporcionado no sea un número entero válido informe al usuario
+c. Una vez que el número de DNI sea válido, tiene que devolver la letra que le
+corresponde para formar el NIF.
+d. La letra correspondiente se calcula en base a la operación "módulo" o "resto de la
+división entera" del número del DNI entre 23. Una vez obtenido el resultado de esta
+operación, se busca la letra correspondiente un array que asigna dicha letra a cada
+uno de los posibles restos.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>T3 - Actividades 2 - Ejercicio 4 - Diego Rodríguez</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Script" onclick="f();" />
+        <script type="text/javascript">
+            function f() {
+                var noContinuar = true;
+                do {
+                    var dni = prompt("DNI sin letra");
+                    if (isFinite(dni) && dni > 0 && dni.length < 9){
+                        noContinuar = false;
+                    }
+                    else {
+                        alert("No es un DNI valido");
+                    }
+                } while (noContinuar);
+                var modulo = dni % 23;
+                var letra = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"]
+                alert("Letra " + letra[modulo]);
+
+            }
+        </script>
+    </body>
+</html>

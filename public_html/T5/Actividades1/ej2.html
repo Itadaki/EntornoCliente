@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 07-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Crear un script que informe al usuario en que zona de la pantalla ha pulsado el ratón. Las zonas
+definidas son las siguientes: izquierda arriba, izquierda abajo, derecha arriba y derecha abajo.
+Para determinar el tamaño de la ventana del navegador, utilizar la función
+tamanoVentanaNavegador() proporcionada.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="tamanoVentanaNavegador.js"></script>
+        <script type="text/javascript">
+            function posicion(elEvento) {
+                var evento = elEvento || window.event;
+                var tamaño = tamanoVentanaNavegador();
+                var clicX = evento.clientX;
+                var clicY = evento.clientY;
+                var middleX = tamaño[0] / 2; //x
+                var middleY = tamaño[1] / 2; //y
+                var s = 'X:' + clicY + ' Y:' + clicX + '\n';
+                s += ((clicY > middleY) ? 'Inferior ' : 'Superior ');
+                s += ((clicX > middleX) ? 'Derecha' : 'Izquierda');
+                alert(s);
+            }
+
+            window.onload = function () {
+                window.onclick = posicion;
+            };
+        </script>
+    </body>
+</html>

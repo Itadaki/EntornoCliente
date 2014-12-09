@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 13-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Realiza una página html y un script JavaScript para realizar lo siguiente:
+a. Incluye un formulario que contenga:
+i. un campo para introducir una determinada cantidad de dinero sin IVA.
+Debes validar el dato introducido por el usuario.
+ii. un campo en el que se represente el importe correspondiente al IVA
+(aplica el 21%). No será editable por el usuario.
+iii. un tercer campo con el total de la suma de los campos anteriores. Será
+sólo de lectura.
+iv. Además se debe realizar un botón que al pulsar abra otra ventana con un
+pequeño catálogo de productos y precios en el que el usuario podrá elegir
+qué productos desea comprar.
+v. Una vez elegidos y cuando pulsa el botón de cerrar la segunda ventana, se
+debe calcular la suma y debe aparecer en el primer campo del formulario
+de la primera ventana, además de calcular el IVA y el total de manera
+automática.
+vi. Incluye elementos “radio button” para cargar una cantidad adicional en
+concepto de “forma de pago”.
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="" rel="stylesheet" />
+        <style type="text/css">
+            body{
+                text-align: center;
+            }
+            table{
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Formulario de compra</h1>
+        <table border="0">
+            <tr>
+                <td>Importe</td>
+                <td><input type="text" id="importe" value="" onblur="validarImporte()"/></td>
+            </tr>
+            <tr>
+                <td>IVA</td>
+                <td><input type="number" id="iva" value="" readonly/></td>
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td><input type="number" id="total" value="" readonly/></td>
+            </tr>
+        </table>
+        <input type="button" value="Calcular" id="calcular" onclick="calcularIva();calcularSuma()"/>
+        <input type="button" value="Catalogo" onclick="abrirCatalogo()"/>
+        <h3>Forma de pago</h3>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>Tarjeta(1€) <input type="radio" name="pago" value="1" checked onchange="calcularSuma()"/></td>
+                    <td>Cheque(2€) <input type="radio" name="pago" value="2" onchange="calcularSuma()" /> </td>
+                    <td>Transferencia(3€) <input type="radio" name="pago" value="3" onchange="calcularSuma()" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="button" value="Comprar" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+//            var importe = document.getElementById('importe');
+//            var iva = document.getElementById('iva');
+//            var total = document.getElementById('total');
+            function validarImporte() {
+                var campo = document.getElementById('importe');
+                var valor = campo.value;
+                campo.value = parseFloat(valor);
+//                calcularIva();
+//                calcularSuma();
+            }
+            function calcularIva() {
+                var importe = document.getElementById('importe').value;
+                var iva = importe * 0.21;
+                document.getElementById('iva').value = iva;
+            }
+            function calcularSuma() {
+                var importe = parseFloat(document.getElementById('importe').value);
+                var iva = parseFloat(document.getElementById('iva').value);
+                var pago = document.getElementsByName('pago');
+                var importeExtra;
+                for (var i = 0; i < pago.length; i++) {
+                    if (pago[i].checked) {
+                        importeExtra = parseInt(pago[i].value);
+                    }
+                }
+                var total = iva + importe + importeExtra;
+                document.getElementById('total').value = total;
+            }
+            function abrirCatalogo() {
+                var ventana = window.open('ej10_sec.html', 'Catalogo', 'width=500px, height=500px');
+
+            }
+        </script>
+    </body>
+</html>

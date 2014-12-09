@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Version 1 del Examen.
+
+-->
+<!--
+Copyright (C) 2014 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #imagen{
+                width: 150px;
+                height: 150px;
+            }
+            img{
+              
+                width: 50px;
+                height: 20px;
+              
+            }
+          
+            #wrapper{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr><td><img id="imagen" src="imagenes/Img0.gif" alt="Img0.gif"><br></td></tr>
+            
+            <tr>
+                <td><img src="imagenes/flecha_izda.gif" alt="flecha_izda" onMouseOver="setInterval(function(){anterior()},300);" onmouseout="clearInterval()"></td>
+                <td><img src="imagenes/flecha_dcha.gif" alt="flecha_dcha" onMouseOver="setInterval(function(){siguiente()},300)" onmouseout="clearInterval()"></td>
+            </tr>
+        </table>
+        <script>
+            var imagenes = new Array("Img0.gif","Img1.gif","Img2.gif","Img3.gif");
+            var indice = 0;
+            
+            
+            function anterior(){
+                if(indice===0){
+                    indice=imagenes.length-1;
+                }
+                else{
+                    indice--;
+                }
+                document.getElementById('imagen').src = "imagenes/"+imagenes[indice];
+                document.getElementById('imagen').alt = imagenes[indice];
+            }
+            function siguiente(){
+                if(indice===imagenes.length-1){
+                    indice=0;
+                }
+                else{
+                    indice++;
+                }
+                document.getElementById('imagen').src = "imagenes/"+imagenes[indice];
+                document.getElementById('imagen').alt = imagenes[indice];
+            
+            }
+
+        </script>
+    </body>
+</html>

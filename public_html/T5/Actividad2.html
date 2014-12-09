@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 03-nov-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = oPrueba el script 5.1 pulsando shitf+4 a la vez, ¿En qué evento
+muestra de verdad el carácter que buscábamos?
+oA la vista del resultado anterior desarrolla un nuevo script
+JavaScript que permita obtener de forma correcta en cualquier
+navegador el carácter correspondiente a la tecla o combinación de
+teclas pulsadas
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Actividad 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            div{
+                float:left;
+                padding: 5px;
+                margin: 5px;
+                border: solid 1px;
+            }
+        </style>
+    </head>
+    <body id="cuerpo"> 
+        <script type="text/javascript">
+            function key(elEvento) {
+                var evento = elEvento || window.event;
+                var user = navigator.userAgent;
+                var s = document.getElementById("cuerpo").innerHTML;
+                s += '<div>';
+                s += 'SHIFT: ' + event.shiftKey +
+                        '<br>' + evento.type +
+                        '<br>charCode:' + evento.charCode;
+                if (user.indexOf("MSIE") !== -1) {
+                    s += '<br>String (keyCode): ' + String.fromCharCode(evento.keyCode);
+                } else {
+                    s += '<br>String (charCode): ' + String.fromCharCode(evento.charCode);
+                }
+                s += '<br>keyCode: ' + evento.keyCode;
+                document.getElementById("cuerpo").innerHTML = s + '</div>';
+            }
+            window.onload = function () {
+                document.getElementById("cuerpo").onkeypress = key;
+            };
+        </script>
+    </body>
+</html>

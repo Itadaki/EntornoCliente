@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html;charset=utf-8">
+        <title>Valores en una tabla</title>
+        <script type="text/javascript">
+       
+            function resalta(elEvento) {
+                //window.event para Internet explorer
+                var evento = elEvento || window.event;
+                
+                switch(evento.type) {
+                    case 'mouseover':
+                        this.style.borderColor = 'black';
+                        break;
+                    case 'mouseout':
+                        this.style.borderColor = 'silver';
+                        break;
+                    case 'click':
+                        alert("coordenadas:"+ evento.screenX+","+evento.screenY);
+                        break;
+                }
+            }
+ 
+            window.onload = function() {
+                document.getElementById("seccion").onmouseover = resalta;
+                document.getElementById("seccion").onmouseout = resalta;
+                document.getElementById("seccion").onclick = resalta;
+            }
+        </script>  
+    </head>
+    <body>
+        <div id="seccion" style="width:150px; height:60px; border:thin solid silver">
+            Sección de contenidos...
+        </div>
+        <!-- Así no porque no pasa el evento, lo identifica como una función nuestra y sino se ponen paréntesis lo reconoce
+        como una cadena literal pero no como una función javascript.
+        <div id="seccion" onmouseover="resalta()" onmouseout="resalta()" style="width:150px; height:60px; border:thin solid silver">
+            Sección de contenidos...
+        </div> -->
+    </body>
+</html>

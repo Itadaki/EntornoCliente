@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Autor = Javier Oltra Riera
+Fecha = 14-nov-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Examen tema 4 version 2.
+-->
+<!--
+Copyright (C) 2014 Javier Oltra Riera
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--CopyRight Javier Oltra Riera-->
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        div{
+            text-align: center;
+            border: 2px solid darkorange;
+        }
+        div img{
+            height: 75px;
+            width: 75px;
+        }
+        div a img{
+            height: 20px;
+            width: 20px;
+        }
+        a{
+            border: 2px solid black;
+        }
+    </style>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+      <div>
+          <h1>Visor de imagenes</h1>
+          <img id="imagen" src="img/Img0.gif"/><br><br>
+          <!--Usa los eventos onmouseover y onmouseout para ejecutar las funciones. -->
+          <a href="#" onmouseover="atras();" onmouseout="clearInterval(ant)"><img src="img/flecha_izda.gif"/></a>
+          &nbsp;&nbsp;
+          <a href="#" onmouseover="setInterval(function() {siguiente()},1000);" onmouseout="clearInterval(sig)"><img src="img/flecha_dcha.gif"/></a>
+      </div>
+      <script type="text/javascript">
+          var ant;
+          var sig;
+          /**
+           * 
+           * @description Asigna a la variable ant al valor del setInterval de anterior para asi poder limpiarlo con el clear cuando haga el evento onmouseout.
+           */
+         function atras(){
+             ant = setInterval(function() {anterior()},1000);
+         }
+         /**
+           * 
+           * @description Asigna a la variable sig al valor del setInterval de siguiente para asi poder limpiarlo con el clear cuando haga el evento onmouseout.
+           */
+         function alante(){
+             sig = setInterval(function() {siguiente()},1000);
+         }
+      </script>
+  </body>
+</html>

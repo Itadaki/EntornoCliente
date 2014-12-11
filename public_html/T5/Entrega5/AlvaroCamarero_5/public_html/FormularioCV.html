@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<!--
+$Autor=Alvaro Camarero Barrio
+Fecha=05-dic-2014
+Licencia=Expression proyecto is undefined on line 5, column 12 in Templates/ClientSide/html.html.
+Version=Expression version is undefined on line 6, column 11 in Templates/ClientSide/html.html.
+Descripcion=EXAMEN tema 5.
+-->
+<!--
+Copyright (C) 2014 Alvaro Camarero Barrio
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+    <body>
+    <center>
+
+        <form id="form_cv" method="post" action="" onsubmit="return validar()">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre" value="" required><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" value="" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*: <input type="text" name="fechNac" value="" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono" value="" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" required><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" required>
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" value="" required><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar" >
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+    <script type="text/javascript">
+        //Laura: todo el código sin comentar
+       //Laura: Álvaro pruebo con fecha 10/4/1894, tele´fono 678987654 y clave 7ahgd5 y tu código no hace nada
+        function validar() {
+            if (validaNombre() && validaApellidos() && validaTel() && validaFecha() && validarClave()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function validaNombre() {
+
+            var nombre = document.getElementById("nombre").value;
+            if ((/^[A-Z][a-z]$/.test(nombre)) && !(nombre === null || nombre.length === 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function validaApellidos() {
+
+            var apellidos = document.getElementById("apellidos").value;
+            if ((/^[A-Z]\s[a-z]$/.test(apellidos)) && !(apellidos === null || apellidos.length === 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //Laura: tienes 2 funciones de validación de fecha
+        function validarFecha() {
+
+            var ano = document.getElementById("ano").value;
+            var mes = document.getElementById("mes").value;
+            var dia = document.getElementById("dia").value;
+
+            fecha = new Date(ano, mes, dia);
+
+            if (!isNaN(fecha)) {
+                return false;
+            }
+
+        }
+        function validaTel() {
+            var telefono = document.getElementById("telefono").value;
+            if (!(/^[96]{8}$/.test(telefono)) && (telefono === null || telefono.length === 0)) {
+                alert("El campo tiene que ser un telefono correcto");
+                return false;
+            }
+            return true;
+        }
+        //Laura: hay que hacerlo con expresión regular
+        function validaFecha() {
+
+            var fecha = document.getElementById("fecha").value;
+            var dia = parseInt(fecha.substr(0, 2));
+            var mes = parseInt(fecha.substr(3, 2));
+            var anyo = parseInt(fecha.substr(6, 4));
+
+            var fechaBuena = false;
+            if (fecha.length == 10 && fecha.charAt(2) == '/' && fecha.charAt(5) == '/') {
+                switch (mes) {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        if (dia <= 31) {
+                            fechaBuena = true;
+                        }
+                        break;
+                    case 2:
+                        if ((anyo % 4 == 0 && anyo % 100 != 0) || anyo % 400 == 0) { //si es bisiesto
+                            if (dia <= 29) {
+                                fechaBuena = true;
+                            }
+                        }
+                        else {
+                            if (dia <= 28) {
+                                fechaBuena = true;
+                            }
+                        }
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        if (dia <= 30) {
+                            fechaBuena = true;
+                        }
+                        break;
+                }
+            }
+
+            if (!fechaBuena)
+                alert("Fecha incorrecta");
+            return fechaBuena;
+        }
+        function validarClave() {
+            var clave = document.getElementById("clave").value;
+            if ((/^\d{1}\D{3}\W{1}\d{1}$/.test(clave))) {
+                return true;
+            } else {
+                return false;
+
+            }
+        }
+        //Laura: botón derecho --> format
+        function validarEnvio() {
+    var relleno = true;
+    var formu = document.getElementsByName("formulario");
+    for (var i = 0; i < formu.length; i++) {
+        if (formu[i].value === "") {
+            relleno = false;
+            
+        }
+    }
+    if (relleno) {
+        document.getElementById("envio").disabled = false;
+    } else {
+        document.getElementById("envio").disabled = true;
+    }
+}
+
+    </script>
+</body>
+
+</html>
+
+

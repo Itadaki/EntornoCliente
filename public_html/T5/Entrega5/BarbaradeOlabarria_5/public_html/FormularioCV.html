@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+#Autor = Bárbara de Olabarria
+#Fecha = 05-dic-2014
+#Licencia = gpl30
+#Versión=1.0
+#Descripción=Documento HTML para la validación de datos con HTML5 y JavaScript
+-->
+<html>
+
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/validaciones.js"></script>
+    </head>
+    <body>
+    <center><script type="text/javascript" src="js/validaciones.js"></script>
+        <form id="form_cv" method="post" action="Resultado.html" onsubmit="return validar('fecha', 'telefono', 'clave')">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre" required><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" required><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" required>
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" required><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar">
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+</body>
+</html>

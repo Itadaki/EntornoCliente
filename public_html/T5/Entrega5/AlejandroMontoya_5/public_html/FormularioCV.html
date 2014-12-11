@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+Autor = Alejandro Montoya Blanco
+Fecha = 05-dic-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Formulario
+-->
+<!--
+Copyright (C) 2014 Alejandro Montoya Blanco 
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="Funciones.js"></script>
+    </head>
+    <body>
+    <center>
+
+
+        <form id="form_cv" method="post" action="">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre" oninput="obligatorio()" required><br><!--Llama a la funcion con el oninput cada vez que escribe-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" oninput="obligatorio()" required><br><!--Llama a la funcion con el oninput cada vez que escribe-->
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha" oninput="obligatorio()" required><br><!--Llama a la funcion con el oninput cada vez que escribe-->
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono" oninput="obligatorio()"  required><br><!--Llama a la funcion con el oninput cada vez que escribe-->
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" required onchange="obligatorio()" ><br><!--Llama a la funcion con el onchange cada vez cambia-->
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" onchange="obligatorio()" required><!--Llama a la funcion con el onchange cada vez cambia-->
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" oninput="obligatorio()" required><br><!--Llama a la funcion con el oninput cada vez que escribe-->
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <!--Laura: Alejandro, esto no controla que se haga el envio, aquí no se pone return-->
+                    <td align='middle'><input type='submit' id="envio" disabled value="Enviar" onclick="return validaTodos()"><!--Valida todos los campos cuando pulsa click-->
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+    <script>
+
+    </script>
+</body>
+</html>

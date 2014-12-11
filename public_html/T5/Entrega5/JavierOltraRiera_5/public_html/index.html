@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Autor = Javier Oltra Riera
+Fecha = 05-dic-2014
+Licencia = C:\Users\Usuario\Documents\NetBeansProjects\HTML5Application\gpl30
+Version = 1.0
+Descripcion = Examen tema 5
+-->
+<!--
+Copyright (C) 2014 Javier Oltra Riera
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--CopyRight Javier Oltra Riera-->
+<html>
+    <head>
+        <title>Examen tema 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="Script.js"></script>
+        <style type="text/css">
+            div{
+                background-color: gray;
+                font-family: Arial;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form action="Correcto.html" id="form_cv" onsubmit="return validar();">
+                <hr>
+                <table>
+                    <tr>
+                        <td>
+                            <!-- Campo del nombre-->
+                            Nombre*:   <input name="formulario" type="text" id="nombre" oninput="validarSubmit()" required><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- Campo de apellidos-->
+                            Apellidos*:   <input name="formulario" type="text" id="apellidos" oninput="validarSubmit()" required><br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- Campo de fecha-->
+                            Fecha de Nacimiento*:(DD/MM/YYYY) <input name="formulario" type="text" id="fecha" oninput="validarSubmit()" required><br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- Campo del telefono-->
+                            Teléfono*:   <input name="formulario" type="text" id="telefono" oninput="validarSubmit()" required><br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- Campo del ficehro (CV)-->
+                            Incluir CV*:   <input onchange="validarSubmit()" name="formulario" type="file" id="cv" required><br>
+
+                        </td>
+                    </tr>
+                    <tr><td>Titulación*
+                            <!-- select tipo de titulacion-->
+                            <select id="titulacion" name="formulario" onchange="validarSubmit()" required>
+                                <option value='' selected>--Seleccione Titulación--</option>
+                                <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                                <option value='Diplomado'>Diplomado</option>
+                                <option value='Licenciado'>Licenciado</option>
+                                <option value='Licenciado'>Grado</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align='left'>
+                            <!-- Campo de la clave-->
+                            Clave*(# 3letras simbolo #):   <input name="formulario" type="text" id="clave" oninput="validarSubmit()" required><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Submit (Enviar)-->
+                        <td align='middle'><input type='submit' id="envio" value="Enviar" disabled>
+                    </tr>
+                </table>
+            </form>
+            <hr>
+        </div>
+    </body>
+</html>

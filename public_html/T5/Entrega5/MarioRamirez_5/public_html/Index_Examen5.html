@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+Autor=Mario Ramírez Padilla
+Fecha=05-dic-2014
+Licencia=default
+Version=1.0
+Descripcion=En este documento tenemos todos los campos del forumalrio
+-->
+<!--
+Copyright (C) 2014 Mario Ramírez Padilla
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript" src="Controlador_Examen5.js"></script>
+        <form method="post" onsubmit="return comprobacion()">
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   
+                    </td>
+                    <td>
+                        <input type="text" name="nomb" id="nombre" />  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos:   
+                    </td>
+                    <td>
+                        <input type="text" name="ape" id="apellidos" required/>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*: 
+                    </td>
+                    <td>
+                        <input type="text" name="nomb" id="fecha" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Telefono Movil*:
+                    </td>
+                    <td>
+                        <input type="text" name="nomb" id="movil" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*
+                    </td>
+                    <td>
+                        <input type="text" name="curri" id="cv" required/><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Titulación*:
+                    </td>
+                    <td>
+                        <select name="Titulaciones" id="cont" required>
+                            <option value="SeleccioneTitulacion">---Seleccione Titulación---</option>
+                            <option value="europa" onclick="titulacion(fp)">Técnico Superior FP</option>
+                            <option value="america" onclick="titulacion(titulado)">Diplomado</option>
+                            <option value="oceania" onclick="titulacion(licenciado)">Licenciado</option>
+                            <option value="asia" onclick="titulacion(grado)">Grado</option>
+                        </select><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Clave*:
+                    </td>
+                    <td>
+                        <input type="text" name="pass" id="clave" required/>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="boton" value="Enviar" id="enviar">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            //Laura; revisa como se comenta el código
+//          función para validar la fecha, cogemos la id del campo y lo validamos diciendo que primero debe de haber
+//          dos dígitos, otros dos dígitos y terminar con cuatro
+            //Laura; Patricia document.getElementById("fecha").value, en todas las funciones. La validación de fecha y teléfono no son correctas
+            function validarFecha() {
+                //Laura: 11/12/1900 la da como incorrecta
+                var fechas = document.getElementById("fecha");
+                if (!(/^\d{2}\W\d{2}\W\d{4}/.test(fechas))) {
+                    alert("introduzca fecha correcta");
+                    return false;
+                }
+                return true;
+            }
+//            función para validar el teléfono, cogemos la id del campo y lo validamos diciendo que primero tiene que se o
+//            un 6 o un 9 y que le siguen 8 números más
+//Laura: 5678763457 es un tfno válido segun tu expresión regular
+            function validarTelefono() {
+                valor = parseFloat(document.getElementById("telefono").value);
+                if (!/^ \d[6|9] \d{8}$/.test(valor)) {
+                    alert("error, introduzca un telefono correcto");
+                    return false;
+                }
+                return true;
+            }
+
+//          función para validar la clave, mismo procedimiento y lo validamos diciendo que primero tiene que haber un 
+//          dígito, a continuación 3 letras, luego un símbolo y finalmente otro número
+            function validarClave() {
+                claves = document.getElementById("clave");
+                if (!/^\d\D{3}\W\d$/.test(claves)) {
+                    alert("introduzca clave correcta");
+                    return false;
+                }
+                return true;
+            }
+
+//          función final donde se comprueba si todas las validaciones dan verdadero
+            function validar() {
+                if (validarFecha() && validarTelefono() && validarClave()) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+//          función que sirve para activar el boton: cuando todo este vacio esta sin activar, cuando esta todo relleno 
+//          se activa
+//Laura: no funciona correctamente
+            function Boton() {
+                if (document.getElementById("nombre").value &&
+                        document.getElementById("apellidos").value &&
+                        document.getElementById("telefono").value &&
+                        document.getElementById("fecha").value &&
+                        document.getElementById("cv").value &&
+                        document.getElementById("titulacion").value &&
+                        document.getElementById("clave").value === null) {
+
+                    document.getElementById("envio").disabled = true;
+
+                } else {
+                    document.getElementById("envio").disabled = false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <form id="form_cv" method="post" action="www.google.es" onsubmit="return validar()">
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv"><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" required>
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" oninput=Boton()><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar">
+                </tr>
+            </table>
+
+        </form>
+    </center>
+</body>
+</html>

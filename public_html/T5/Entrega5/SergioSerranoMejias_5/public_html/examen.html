@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 05-dic-2014
+Licencia = gpl30
+Version = 1.0
+Descripcion = Examen de javascript formulario.
+
+-->
+<!--
+Copyright (C) 2014 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+    <body>
+    <center>
+
+        <form id="form_cv" method="post" action="">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        <!-- Laura: en los imput es en el oninput, onchange no salta hasta que no se pierde el foco, de hecho
+                        relleno todos los campos y hasta que no saco el foco del ultimo no se des/habilita el botón -->
+                        Nombre*:   <input type="text" id="nombre" required onchange="activarEnviar(this.value)"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" required onchange="activarEnviar(this.value)"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha" maxlength="10" required onchange="activarEnviar(this.value)"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono" maxlength="9" onchange="activarEnviar(this.value)" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" required onchange="activarEnviar(this.value)"><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" required onchange="activarEnviar(this.value)">
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" required onchange="activarEnviar(this.value)"><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar" disabled onsubmit="return enviarForm()">
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+    <script>
+        var enviar = 0;
+        /**
+         * @description si las tres funciones de comprobacion devuelven true, manda el formulario;
+         * @returns {Boolean}
+         */
+        
+        //Laura: relleno todo mal, y me deja realizar el envio, ¿por qué ninguna función devuelve false?
+        //Laura; no se informa al usuario de los errores, no se vacían los campos
+        //Laura: no parece que valide nada
+        function enviarForm() {
+            if (validaFecha() && validaTelefono() && validaClave()) {
+                alert('Enviado');
+                return true;
+            }
+        }
+
+        /**
+         * @description Separa la fecha en dia, mes , año y comprueba que sean numeros y que esten dentro
+         * del rango de numeros;
+         * @returns {Boolean}
+         */
+        function validaFecha() {
+            //Laura: hay que validar con expresión regular
+            var textoFecha = document.getElementById('fecha').value;
+            var dia = parseInt(textoFecha.substr(0, 2));
+            var mes = parseInt(textoFecha.substr(3, 2));
+            var año = parseInt(textoFecha.substr(6, 4));
+
+            if ((isFinite(dia) && dia > 0 && dia < 31) && (isFinite(mes) && mes > 0 && mes < 13) && (isFinite(año) && año > 1899)) {
+                return true;
+            }
+
+        }
+        /**
+         * @description comprueba que sea de una longitud determinada y  que empiece por 9 o por 6
+         * @returns {Boolean}
+         */
+        //Laura: hay que validar con expresión regular
+        function validaTelefono() {
+            var textoTelefono = document.getElementById('telefono').value;
+            if (textoTelefono.length === 9 && textoTelefono.charAt(0) === '9' || textoTelefono.charAt(0) === '6') {
+                return true;
+            }
+        }
+        /**
+         * @description comprueba  mediante una expresion regular que 
+         *  la clave es: Numero+letra+letra+letra+simbolo+numero
+         * @returns {Boolean}
+         */
+        function validaClave() {
+            var clave = document.getElementById('clave').value;
+            if (/^\d\D\D\D\W\d$/.test(clave)) {
+                return true;
+            }
+        }
+        /**
+         * 
+         * @param {type} valor del campo en el que se encuentra la funcion
+         * @description Si el campo es rellenado , se le suma uno. Cuando enviar vale 6 o mas activa el boton.
+         * 
+         */
+        function activarEnviar(valor) {
+            if (valor === "") {
+                enviar--;
+            } else {
+                enviar++;
+            }
+
+            if (enviar === 7) {
+                document.getElementById('envio').disabled = false;
+            }else{
+                document.getElementById('envio').disabled = true;
+            }
+        }
+
+    </script>
+</body>
+</html>

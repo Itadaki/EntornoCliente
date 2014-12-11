@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<!--
+Autor=oscar Ventura 
+Fecha=05-dic-2014
+Licencia=default
+Version=1.0
+Descripcion= formulario que al enviarse compruebe si se cumplen las condiciones de todos los campos.
+-->
+<!--
+Copyright (C) 2014 Oscar Ventura Manzanares
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+    <body>
+    <center>
+
+        <form id="form_cv" method="post" action="correcto.html" onsubmit="return validatodo();">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre" required><br> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" required><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" required>
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" required><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar">
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+    <script type="text/javascript">
+        //Laura: código sin comentar. No validas fecha. 
+        function validatodo() { /* función que incluye todas las validaciones */
+            if (validamovil() && validaclave()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function activarenviar() {
+
+            if (validatodo()) {
+                document.getElementById("envio").disabled = false;
+            } else {
+                document.getElementById("envio").disabled = true;
+            }
+        }
+
+        function validamovil() { /* función que valida el móvil si tiene 9 dígitos y empieza por 6 o 9 */
+            var telefono = document.getElementById("telefono").value;
+            if ((/^[6||9]{1}\d{8}$/.test(telefono))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validaclave() { /* función que valida la clave con la secuencia: número-letra-letra-letra-símbolo-número */
+            var clave = document.getElementById("clave").value;
+            if ((/^\d\D{3}\W\d$/.test(clave))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
+

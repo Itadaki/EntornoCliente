@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+Autor= Susana
+Fecha= 05-dic-2014
+Licencia= default
+Version= 1.0
+Descripcion= Script para realizar un formulario con las validaciones correspondientes.
+-->
+
+<!--
+Copyright (C) 2014 Susana
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Entrega Tema 5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+    <body>
+    <center>
+
+        <form id="form_cv" method="post" action="" onsubmit="return validar();">
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Nombre*:   <input type="text" id="nombre" name="nombre" required oninput="validarCampo()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apellidos*:   <input type="text" id="apellidos" name="apellidos" required oninput="validarCampo()"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de Nacimiento*:   <input type="text" id="fecha" name="fecha" oninput="validarCampo()" required value="DD/MM/YYYY"><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Teléfono Móvil*:   <input type="text" id="telefono" name="telefono" oninput="validarCampo()" required><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Incluir CV*:   <input type="file" id="cv" oninput="validarCampo()" required><br>
+
+                    </td>
+                </tr>
+                <tr><td>Titulación*
+
+                        <select id="titulacion" oninput="validarCampo()" required>
+                            <option value='' selected>--Seleccione Titulación--</option>
+                            <option value='Técnico Superior FP'>Técnico Superior FP</option>
+                            <option value='Diplomado'>Diplomado</option>
+                            <option value='Licenciado'>Licenciado</option>
+                            <option value='Licenciado'>Grado</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='left'>
+                        Clave*:   <input type="text" id="clave" oninput="validarCampo()" required><br>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align='middle'><input type='submit' id="envio" value="Enviar" disabled >
+                </tr>
+            </table>
+
+        </form>
+        <hr>
+    </center>
+    <script type="text/javascript">
+        //Funcion que contiene las distintas validaciones que se realizan.
+        //Laura: COn fecha 11/01/1900, teléfono 785456789 y clave 7tyug8 hace el envío, y el teléfono y la clave son incorrectos
+        function validar() {
+            if (validaFecha() && validaTelefono() && validaClave()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        //Funcion que valida que se haya introducido una fecha en el formato solicitado.
+        function validaFecha() {
+            fecha = document.getElementById("fecha").value;
+
+            // var dia = parseInt(fecha.substr(0, 2));
+            // var mes = parseInt(fecha.substr(3, 2));
+            // var anyo = parseInt(fecha.substr(6, 4));
+            if (/^[01-31]{2}\/[01-12]{2}\/[1900-6000]{4}$/.test(fecha) && fecha.length == 10 && fecha.charAt(2) == '/' && fecha.charAt(5) == '/') {
+                return true;
+            }
+            else {
+                alert("No ha indicado una fecha correcta");
+                return false;
+            }
+        }
+        //Laura: no valida teléfono
+        //Funcion que valida que se introduzca un telefono de 9 digitos en el que el primero sea un 6 o un 9
+        function validaTelefono() {
+            var valor = document.getElementById("telefono").value;
+            if (!(/^[0-9]{9}$/.test(valor)) && valor == null && !isFinite(valor)) {
+                alert("El campo tiene que ser un telefono");
+                return false;
+            }
+            return true;
+        }
+        //Funcion que valida que se introduza una clave que empiece por un numero,seguido de 3 letras,
+        //un simbolo y acabar con otro numero.
+        //Laura: no valida clave
+        function validaClave() {
+            clave = document.getElementById("clave").value;
+            if (!(/^\d{1}\D{3}\W{1}\d{1}$/.test(clave)) && clave == null) {
+                alert("No ha introducido bien la clave");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        //Funcion que valida que todos los campos obligatorios esten rellenados
+        function validarCampo1() {
+            if ((document.getElementById(nombre) !== null) && (document.getElementById(apellidos) !== null) && (document.getElementById(fecha) !== null) && (document.getElementById(telefono) !== null) && (document.getElementById(cv) !== null) && (document.getElementById(titulacion) !== null) && (document.getElementById(clave) !== null)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        //Laura: la des/habilitación del botón de envio no funciona correctamente
+        //Funcion que comprueba que si todos los campos estan rellenados se active el boton de enviar
+        function validarCampo() {
+            if (validarCampo1()) {
+                document.getElementById("envio").disabled = true;
+            } else {
+                document.getElementById("envio").disabled = false;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

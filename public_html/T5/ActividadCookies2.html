@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 12-dic-2014
+Licencia = gpl30 
+Version = 1.0
+Descripcion = 
+-->
+
+<!--
+Copyright (C) 2014 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejercicio 4 - Actividades 1 - T5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form oninput="out.value=edad.value" id="form_id">
+            Nombre <input type="text" name="nombre" value="" required/><br>
+            Apellidos <input type="text" name="apellidos" value="" required/><br>
+            DNI <input type="text" name="dni" value="" required/><br>
+            Sexo:<br>
+            <input type="radio" name="sexo" value="Hombre" required checked/> Hombre<br>
+            <input type="radio" name="sexo" value="Mujer" required/> Mujer<br>
+            Fecha de nacimiento <input type="date" name="fecha" required/><br>
+            eMail <input type="email" name="fecha" required/><br>
+            Edad <input type="range" name="edad" min="18" max="100" step="1" value="18" >
+            <output name="out" for="edad">18</output><br>
+            Telefono <input type="tel" name="fecha" required/><br>
+            Foto <input type="file" name="foto" /><br>
+            Enviar publicidad <input type="checkbox" name="publicidad" /><br>
+            <input type="submit" value="Guardar cambios" /> <input type="reset" value="Borrar datos introducidos" />
+        </form>
+        <script type="text/javascript">
+            function comprobar() {
+                var vacio = false;
+                var form = document.getElementById('form_id');
+                var inputs = form.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length - 4; i++) {
+                    if (inputs[i].value.length === 0) {
+                        vacio = true;
+                        break;
+                    }
+                }
+                return vacio;
+            }
+            function guardar() {
+                
+            }
+        </script>
+    </body>
+</html>

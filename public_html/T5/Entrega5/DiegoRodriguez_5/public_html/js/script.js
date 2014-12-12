@@ -116,10 +116,25 @@ function activarEnvio() {
 }
 
 function añadir(){
-    var opciones = document.getElementById('opciones');
-    var idiomas = document.getElementById('idiomas');
+    var origen = document.getElementById('opciones');
+    var indice = origen.selectedIndex;
+    var elegido = origen.options.item(indice);
+    document.getElementById('idiomas').add(elegido);
 }
 function quitar(){
-    var opciones = document.getElementById('opciones');
-    var idiomas = document.getElementById('idiomas');
+    var origen = document.getElementById('idiomas');
+    var indice = origen.selectedIndex;
+    var elegido = origen.options.item(indice);
+    document.getElementById('opciones').add(elegido);
 }
+
+function mover(posicion) {
+                var lista = document.getElementById('lista');
+                var indice = lista.selectedIndex;
+                var actual = lista.options.item(indice);
+                var movido = lista.options.item(indice + posicion);
+                var swap = actual.text;
+                actual.text = movido.text;
+                movido.text = swap;
+                lista.selectedIndex = indice + posicion;
+            }

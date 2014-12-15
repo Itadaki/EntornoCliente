@@ -95,17 +95,17 @@ function comprobarExp(cteCampo, expresion) {
 //    document.getElementById('envio').disabled = desactivado;
 //}
 
-function activarCasilla(){
+function activarCasilla() {
     var desactivado = false;
     var terminos = document.getElementById('terminos');
     var inputs = document.getElementById('form_cv');
-    for (var i = 0; i < inputs.length - 2; i++) {
+    for (var i = 0; i < inputs.length - 4; i++) {
         if (inputs[i].value.length === 0) {
             desactivado = true;
         }
     }
     terminos.disabled = desactivado;
-    if (desactivado){
+    if (desactivado) {
         terminos.checked = false;
     }
     activarEnvio();
@@ -115,26 +115,15 @@ function activarEnvio() {
     document.getElementById('envio').disabled = !document.getElementById('terminos').checked;
 }
 
-function añadir(){
+function añadir() {
     var origen = document.getElementById('opciones');
     var indice = origen.selectedIndex;
     var elegido = origen.options.item(indice);
     document.getElementById('idiomas').add(elegido);
 }
-function quitar(){
+function quitar() {
     var origen = document.getElementById('idiomas');
     var indice = origen.selectedIndex;
     var elegido = origen.options.item(indice);
     document.getElementById('opciones').add(elegido);
 }
-
-function mover(posicion) {
-                var lista = document.getElementById('lista');
-                var indice = lista.selectedIndex;
-                var actual = lista.options.item(indice);
-                var movido = lista.options.item(indice + posicion);
-                var swap = actual.text;
-                actual.text = movido.text;
-                movido.text = swap;
-                lista.selectedIndex = indice + posicion;
-            }

@@ -36,8 +36,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             Numero <input type="number" id="numero" value="" required/><br>
             Fecha <input type="date" id="fecha" required/><br>
             Check <input type="checkbox" id="check" required/><br>
-            <input type="button" value="validar" onclick="validar()" />
-            <input type="button" value="borrar" onclick="borrarCookies()"/>
+            <input type="submit" value="Enviar" />
+            <input type="button" value="Guardar" onclick="guardarCookies()" />
+            <input type="button" value="Mostrar" onclick="showCookies()" />
+            <input type="button" value="Borrar" onclick="borrarCookies()"/>
         </form>
         <script type="text/javascript">
 
@@ -57,7 +59,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 setCookie("vacio", vacio, 365);
                 setCookie("numero", numero, 365);
                 setCookie("fecha", fecha, 365);
-                console.log('creadas');
             }
             function borrarCookies() {
                 delete_cookie("vacio");
@@ -93,7 +94,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 if ((fecha.match(expresion)) && (fecha !== '')) {
                     return existeFecha(fecha);
                 }
-                alert('nop');
+                alert('Error en la fecha');
                 return false;
             }
             function existeFecha(fecha) {

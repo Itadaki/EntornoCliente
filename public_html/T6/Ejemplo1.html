@@ -1,0 +1,61 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=20-ene-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción=Código transparencia 23
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Título DOM</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            function pruebaDOM() {
+                //Obtenemos el nodo <html>, de este derivan <head> y <body>
+                var obj_html = document.documentElement;
+                //Obtenemos el nodo <head>
+                var obj_head = obj_html.firstChild;
+                //Obtenemos el nodo <body>
+                var obj_body = obj_html.lastChild;
+
+                alert("obj_html es un nodo de tipo: " + obj_html.nodeType + " y valor:" + obj_html.nodeValue);
+                alert("obj_head es un nodo de tipo: " + obj_head.nodeType + " y valor:" + obj_head.nodeValue);
+                alert("obj_body es un nodo de tipo: " + obj_body.nodeType + " y valor:" + obj_body.nodeValue);
+
+                /* Otra forma de acceder a head y body, si hubiese más nodos hijos de html, accederiamos así*/
+                obj_head = obj_html.childNodes[0];
+                obj_body = obj_html.childNodes[2];
+                var numeroHijos = obj_html.childNodes.length;
+
+                //Tenemos 3 hijos, 2 de tipo Element que representan a head y body 
+                //El otro nodo el de la posición 1 es un nodo TextNode que los navegadores añaden para 
+                //resperesentar los espacios en blanco entre tags, es decir, los /n y el formato con tabulaciones que
+                //añadimos lo representan mediante TextNode
+                alert("obj_html tiene: " + numeroHijos + " nodos hijo");
+                alert("obj_head es un nodo de tipo: " + obj_head.nodeType + " y valor:" + obj_head.nodeValue);
+                alert("obj_body es un nodo de tipo: " + obj_body.nodeType + " y valor:" + obj_body.nodeValue);
+
+                //Recorremos con un bucle solo nodos de tipo element
+                for (i = 0; i < numeroHijos; i++) {
+                    if (obj_html.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+                        alert("Soy el nodo " + i + " y soy de tipo Element");
+
+                    }
+                }
+
+                //También podemos acceder a html a través de algún hijo
+                obj_html = obj_body.parentNode;
+                alert("obj_html es un nodo de tipo: " + obj_html.nodeType + " y valor:" + obj_html.nodeValue);
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Muy importante no acceder al modelo DOM sin que la página se haya cargado por completo.
+        No ejecutamos código para DOM en el head, pues el árbol no se habrá cargado completamente -->
+        <p>Parrafo DOM</p>
+        <p>Parrafo DOM segundo</p>
+        <p>Parrafo DOM tres</p>
+        <script type="text/javascript">pruebaDOM();</script>
+    </body>
+</html>

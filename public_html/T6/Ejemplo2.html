@@ -1,0 +1,48 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=20-ene-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción=Ejemplo 2 -- Acceso directo a los nodos mediante funciones DOM
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            function funcionesDOM() {
+                //Obtengo todos los nodos que representan un tag div
+                var divs = document.getElementsByTagName("div");
+                for (var i = 0; i < divs.length; i++) {
+                    alert("soy el nodo div " + i + " soy de tipo " + divs[i].nodeType + " y tengo " + divs[i].childNodes.length + " hijos");
+                }
+                //También podemos utilizar las funciones sobre un subárbol
+                var enlace = divs[0].getElementsByTagName("a");
+                for (var j = 0; j < enlace.length; j++) {
+                    alert("soy el nodo a " + j + " soy de tipo " + enlace[j].nodeType + " y tengo " + enlace[j].childNodes.length + " hijos");
+                }
+
+                //Podemos recuperar nodos por el nombre asignado en el atributo name
+                var iFecha = document.getElementsByName("fecha");
+                for (var k = 0; k < iFecha.length; k++) {
+                    alert("soy el nodo fecha " + k + " soy de tipo " + iFecha[k].nodeType + " y tengo " + iFecha[k].childNodes.length + " hijos");
+                }
+
+                //Podemos recuperar nodos por el valor del atributo id
+                var iFechaF1 = document.getElementById("f1");
+                alert("soy el nodo f1 de tipo " + iFechaF1.nodeType + " y tengo " + iFechaF1.childNodes.length + " hijos");
+            }
+        </script>
+    </head>
+    <body onload="funcionesDOM()">
+        <div id="d1"><a href="URL1"></a></div>
+        <div id="d2"><a href="URL1"></a></div>
+        <div id="d3">
+            <a href="URL1"></a>
+            <input type="text" name="fecha" id="f1">
+            <input type="text" name="fecha" id="f2">
+        </div>
+    </body>
+</html>

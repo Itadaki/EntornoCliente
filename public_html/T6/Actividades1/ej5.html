@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Título DOM</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            function start(boton) {
+                var s = 'HTML<ul><li>' + recorrer(document.getElementsByTagName('body')[0]) + '</li></ul>';
+                document.getElementById('id').innerHTML = s;
+                boton.disabled = true;
+            }
+            function recorrer(nodo) {
+                if (nodo.hasChildNodes()) {
+                    var s = '';
+                    for (var i = 0; i < nodo.childNodes.length; i++) {
+                        s += recorrer(nodo.childNodes[i])+' ';
+                    }
+                    return s;
+                } else {
+                    if (nodo.nodeType === Node.ELEMENT_NODE && nodo.nodeName === 'P') {
+                        return 'nodo ' + nodo.nodeName + '(' + nodo.nodeType + ')</ul>';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Muy importante no acceder al modelo DOM sin que la página se haya cargado por completo.
+        No ejecutamos código para DOM en el head, pues el árbol no se habrá cargado completamente -->
+        <p>Parrafo DOM</p>
+        <p>Parrafo DOM segundo</p>
+        <p>Parrafo DOM tres</p>
+        <input type="button" value="Ver" onclick="start(this)"/>
+        <div id="id"></div>
+    </body>
+</html>

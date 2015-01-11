@@ -1,26 +1,58 @@
 <!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 09-ene-2015
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Descárgate el archivo Ejemplo1.html, añade el código necesario para:
+a. Recorrer todos los nodos hijos de body
+b. Para los nodos hijos que sean de tipo element y nombre p (tags de párrafo) accede al
+texto del párrafo y muéstralo por pantalla.
+-->
+
+<!--
+Copyright (C) 2015 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <html>
     <head>
         <title>Título DOM</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>li{list-style:none;}ul{background: rgba(100,0,100,0.05)}</style>
         <script type="text/javascript">
             function start(boton) {
-                var s = 'HTML<ul><li>' + recorrer(document.getElementsByTagName('body')[0]) + '</li></ul>';
-                document.getElementById('id').innerHTML = s;
+                var s = '<ul><li>BODY<ul>' + recorrer(document.documentElement.childNodes[2]) + '</ul></li></ul>';
+                document.getElementById('resultado').innerHTML = s;
                 boton.disabled = true;
             }
             function recorrer(nodo) {
                 if (nodo.hasChildNodes()) {
                     var s = '';
                     for (var i = 0; i < nodo.childNodes.length; i++) {
-                        s += recorrer(nodo.childNodes[i])+' ';
+                        if (nodo.childNodes[i].nodeType === Node.ELEMENT_NODE && nodo.childNodes[i].nodeName === 'P') {
+                            s += '<li>' + nodo.childNodes[i].innerHTML + '</li>';
+                        } else {
+                            s += '<ul>'+recorrer(nodo.childNodes[i])+'</ul>';
+                        }
                     }
                     return s;
-                } else {
-                    if (nodo.nodeType === Node.ELEMENT_NODE && nodo.nodeName === 'P') {
-                        return 'nodo ' + nodo.nodeName + '(' + nodo.nodeType + ')</ul>';
-                    }
                 }
+                else if (nodo.nodeType === Node.ELEMENT_NODE && nodo.nodeName === 'P') {
+                    return '<li>' + nodo.innerHTML + '</li>';
+                }
+                return '';
             }
         </script>
     </head>
@@ -30,7 +62,9 @@
         <p>Parrafo DOM</p>
         <p>Parrafo DOM segundo</p>
         <p>Parrafo DOM tres</p>
+        <div><p>Parrafo DOM cuatro</p></div>
+        <div><div><div><p>Parrafo DOM cinco</p></div></div></div>
         <input type="button" value="Ver" onclick="start(this)"/>
-        <div id="id"></div>
+        <div id="resultado"></div>
     </body>
 </html>

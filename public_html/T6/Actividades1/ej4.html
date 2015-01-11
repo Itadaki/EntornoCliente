@@ -4,7 +4,9 @@ Autor = Diego Rodríguez Suárez-Bustillo
 Fecha = 09-ene-2015
 Licencia = gpl30 
 Version = 1.0
-Descripcion = 
+Descripcion = Realiza un script Javascript que recorra y muestre con un alert, cada tipo de nodo del árbol de
+una página HTML. La solución debe ser general, es decir, debe funcionar con cualquier página
+HTML
 -->
 
 <!--
@@ -29,30 +31,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>li, #id{list-style:none;}</style>
+        <style>li{list-style:none;}ul{background: rgba(100,0,100,0.05)}</style>
         <script type="text/javascript">
             function start(boton) {
-                var s = 'HTML<ul><li>' + recorrer(document.documentElement) + '</li></ul>';
-                document.getElementById('id').innerHTML = s;
+                var s = '<ul><li>HTML<ul>' + recorrer(document.documentElement) + '</ul></li></ul>';
+                document.getElementById('resultado').innerHTML = s;
                 boton.disabled = true;
             }
             function recorrer(nodo) {
                 if (nodo.hasChildNodes()) {
                     var s = '';
                     for (var i = 0; i < nodo.childNodes.length; i++) {
-                        s += 'nodo '+nodo.childNodes[i].nodeName + '(' + nodo.childNodes[i].nodeType + ')<ul>';
-                        s += '<li>' + recorrer(nodo.childNodes[i]) + '</li>';
+                        s += '<li>nodo ' + nodo.childNodes[i].nodeName +
+                                '(' + nodo.childNodes[i].nodeType + ') ' +
+                                (nodo.childNodes[i].hasChildNodes() ? 'hijos: ' : '') + '</li>';
+                        if (nodo.childNodes[i].hasChildNodes()) {
+                            s += '<ul>' + recorrer(nodo.childNodes[i]) + '</ul>';
+                        }
                     }
-                    return s + '</ul>';
-                } else {
-                    return 'nodo '+nodo.nodeName + '(' + nodo.nodeType + ')</ul>';
+                    return s;
                 }
+                return '<li>nodo ' + nodo.nodeName + '(' + nodo.nodeType + ')</li>';
             }
         </script>
     </head>
     <body>
         <input type="button" value="Ver" onclick="start(this)"/>
-        <div id="id"></div>
-        <div><div><div><div></div></div></div></div>
+        <div id="resultado"></div>
+        <p>Texto de <span>parrafo</span> para ver los <span><b><i>nodos</i> <u>en accion</u></b></span></p>
     </body>
 </html>

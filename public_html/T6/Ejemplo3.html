@@ -1,0 +1,49 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=20-ene-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción=Ejemplo 3 - Creación y eliminación de nodos DOM
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            function crearParrafo() {
+                //Creamos el nodo que representa el tag
+                var parrafo = document.createElement("p");
+                //Creamos el nodo que representa el texto
+                var contenido = document.createTextNode("Nuevo parrafo añadido");
+                //Añadimos el contenido como hijo del parrafo
+                parrafo.appendChild(contenido);
+                //Ahora insertamos el parrafo como hijo del div
+                document.getElementById("d1").appendChild(parrafo);
+                document.getElementById("b2").disabled = false;
+
+            }
+
+            function eliminarParrafo() {
+                //Para eliminar un nodo primero debemos identificarlo
+                //Si le hubiésemos puesto id al párrafo podríamos recuperarlo directamente
+                var parrafos = document.getElementsByTagName("p");
+                //Ahora borramos el parrafo como hijo del div
+                if (document.getElementById("d1").hasChildNodes() && parrafos.length > 0) {
+                    document.getElementById("d1").removeChild(parrafos[0]);
+                    if (parrafos.length === 0) {
+                        document.getElementById("b2").disabled = true;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="d1">
+            <input type="button" name="boton" value="Crear parrafo" id="b1" onclick="crearParrafo()">
+            <input type="button" name="boton" value="Eliminar parrafo" id="b2" onclick="eliminarParrafo()" disabled="">
+
+        </div>
+    </body>
+</html>

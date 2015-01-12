@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)http://aulavirtual2.educa.madrid.org/file.php/15919/tema6/Ejemplo5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    
+    <script type="text/javascript">
+        function ratonEncima(){
+             //Accedemos al valor del nodo que representa el div
+             document.getElementsByTagName("div")[0].childNodes[0].nodeValue="El RATÓN ESTÁ ENCIMA";
+        }
+        function ratonFuera(){
+            //Accedemos al valor del nodo que representa el div
+            document.getElementsByTagName("div")[0].childNodes[0].nodeValue="El RATÓN NO ESTÁ ENCIMA";
+        }
+    </script>
+  </head>
+  <body>
+      <div onmouseover="ratonEncima()" onmouseout="ratonFuera()">El RATÓN NO ESTÁ ENCIMA</div>
+  
+
+</body></html>

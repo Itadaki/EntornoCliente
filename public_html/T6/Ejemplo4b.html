@@ -1,0 +1,40 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=20-ene-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción=Ejemplo 4 -- Acceso a los atributos de un nodo DOM
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            function atributosDOM(){
+                //Obtengo todos los nodos que representan un tag div
+                var enlace=document.getElementById("a1");
+                
+                alert("soy el nodo de tipo "+enlace.nodeType+ " y mis atributos son\n");
+                //Accedo a los atributos a través de la propiedad attributes
+                alert(enlace.attributes.getNamedItem("href").nodeName+" = "+enlace.attributes.getNamedItem("href").nodeValue); 
+                //También podemos obtenerlo así
+                alert(enlace.attributes.item(0).nodeName+" : "+enlace.attributes.item(0).nodeValue);     
+                
+               
+                
+            }
+            
+        </script>
+    </head>
+    <body onload="atributosDOM()">
+        <div id="d1"><a href="URL2"></a></div>
+        <div id="d2"><a href="URL3"></a></div>
+        <div id="d3">
+            <a id="a1" href="URL1"></a>
+            <input type="text" name="fecha" id="f1">
+            <input type="text" name="fecha" value="adios" id="f2">
+        </div>
+    </body>
+</html>

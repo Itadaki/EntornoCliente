@@ -35,7 +35,7 @@ function validarNombre() {
     }
 }
 function validarApellidos() {
-    var apellidos = document.getElementsById("apellidos").value.split(" ");
+    var apellidos = document.getElementById("apellidos").value.split(" ");
     if ((/^[6,9]\d{1}[1-9]\d{9}$/.test(apellidos[0]) || /^[6,9]\d[1-9]\d{9}$/.test(apellidos[1]) )) {
         return true;
     } else {

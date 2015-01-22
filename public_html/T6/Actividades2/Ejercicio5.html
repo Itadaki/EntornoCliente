@@ -19,10 +19,15 @@
                 li.appendChild(texto);
                 lista.appendChild(li);
             }
+            function anadeConHTML() {
+                var lista = document.getElementById('lista');
+                lista.innerHTML+= '<li>Elemento nuevo</li>';
+            }
         </script>
     </head>
     <body>
-
+        <input type="button" value="Añadir nodo" onclick="anade();">
+        <input type="button" value="Añadir innerHTML" onclick="anadeConHTML();">
         <ul id="lista">
             <li>Lorem ipsum dolor sit amet</li>
             <li>Consectetuer adipiscing elit</li>
@@ -30,8 +35,5 @@
             <li>Phasellus libero</li>
             <li>Maecenas nisl arcu</li>
         </ul>
-
-        <input type="button" value="Añadir elemento" onclick="anade();">
-
     </body>
 </html>

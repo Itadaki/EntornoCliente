@@ -4,7 +4,7 @@ Autor = Diego Rodríguez Suárez-Bustillo
 Fecha = 12-ene-2015
 Licencia = gpl30 
 Version = 1.0
-Descripcion = 
+Descripcion = Ejercicio 6 - Tema 6
 -->
 
 <!--
@@ -36,12 +36,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <input type="button" value="Añadir" onclick="añadir()"/>
-        <input type="button" value="Clonar" onclick="clonar()"/>
+        <input type="button" value="Clonar" onclick="clonar()"/><br>
+        <input type="button" value="Añadir2" onclick="añadir2()"/>
+        <input type="button" value="Clonar2" onclick="clonar2()"/>
         <h3>Lista original</h3>
         <ul id="lista">
             
         </ul>
         <hr>
+        <h3>Listas clonadas</h3>
         <script type="text/javascript" src=""></script>
         <script type="text/javascript">
             function añadir(){
@@ -56,6 +59,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 var nuevaLista = listaOriginal.cloneNode(true); //Hay que usar true si quieres una copia intensa
                 nuevaLista.setAttribute('id', '');
                 document.getElementsByTagName('body')[0].appendChild(nuevaLista);
+            }
+            function añadir2(){
+                var lista = document.getElementById('lista');
+                lista.innerHTML += '<li>Elemento nuevo</li>';
+            }
+            function clonar2(){
+                //insertAdjacentHTML
+                //Syntax
+                //element.insertAdjacentHTML(position, text);
+                //position is the position relative to the element, and must be one of the following strings:
+                    //'beforebegin'
+                        //Before the element itself.
+                    //'afterbegin'
+                        //Just inside the element, before its first child.
+                    //'beforeend'
+                        //Just inside the element, after its last child.
+                    //'afterend'
+                        //After the element itself.
+                //text is the string to be parsed as HTML or XML and inserted into the tree.
+                var listaOriginal = document.getElementById('lista');
+                var nuevaLista = listaOriginal.outerHTML;
+                document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend',nuevaLista);
             }
         </script>
     </body>

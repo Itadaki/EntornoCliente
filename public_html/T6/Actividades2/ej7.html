@@ -4,7 +4,7 @@ Autor = Diego Rodríguez Suárez-Bustillo
 Fecha = 16-ene-2015
 Licencia = gpl30 
 Version = 1.0
-Descripcion = 
+Descripcion = Ejercicio 7 - Tema 6
 -->
 
 <!--
@@ -47,8 +47,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             function mover() {
                 var listaOrigen = document.getElementById('chicas');
                 var listaDestino = document.getElementById('chicos');
-                var li = listaOrigen.childNodes[(listaOrigen.childNodes.length - 1)];
-                listaDestino.appendChild(li);
+                listaDestino.appendChild(listaOrigen.lastChild);
+//                SOLUCION ANTI NODOS DE TEXTO
+//                var chicas = document.getElementById('chicas').getElementsByTagName('li');
+//                var listaDestino = document.getElementById('chicos');
+//                listaDestino.appendChild(chicas[chicas.length-1]);
                 comprobar();
             }
             function comprobar(){

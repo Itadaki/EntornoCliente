@@ -4,7 +4,7 @@ Autor = Diego Rodríguez Suárez-Bustillo
 Fecha = 16-ene-2015
 Licencia = gpl30 
 Version = 1.0
-Descripcion = 
+Descripcion = Ejercicio 9 - Tema 6
 -->
 
 <!--
@@ -36,7 +36,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <input type="text" id="texto" value="Texto a insertar" /><br>
-        <input type="button" value="Insertar en tabla" onclick="insertar()"/>
+        <input type="button" value="Insertar en tabla" onclick="insertar()"/><br>
+        <input type="button" value="Insertar en tabla 2" onclick="insertar2()"/>
         <table id="tabla" style="border: 3px black solid"></table>
 
         <script type="text/javascript" src=""></script>
@@ -57,7 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 var boton = document.createElement('input');
                 boton.type = 'button';
                 boton.value = 'Eliminar';
-                boton.onclick = eliminar;
+                boton.setAttribute('onclick', 'eliminar(this)');
                 celda.appendChild(boton);
                 fila.appendChild(celda);
 
@@ -65,30 +66,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 boton = document.createElement('input');
                 boton.type = 'button';
                 boton.value = 'Clonar';
-                boton.onclick = clonar;
+                boton.setAttribute('onclick', 'clonar(this)');
                 celda.appendChild(boton);
                 fila.appendChild(celda);
 
                 tabla.appendChild(fila);
 //                texto.value = '';
             }
-            function eliminar(elEvento) {
-                var evento = elEvento || window.event;
-                var elementoOrigen = evento.srcElement;
-                var abuelo = elementoOrigen.parentNode.parentNode;
+            function insertar2() {
+                var texto = document.getElementById('texto');
+                var tabla = document.getElementById('tabla');
+                var fila = '<tr id="fila-'+filas++ +'"><td>'+texto.value+'</td>';
+                fila += '<td><input type="button" value="Eliminar" onclick="eliminar(this)"></td>';
+                fila += '<td><input type="button" value="Clonar" onclick="clonar(this)"></td>'
+                tabla.insertAdjacentHTML('beforeend', fila);
+            }
+            function eliminar(elemento) {
+                var abuelo = elemento.parentNode.parentNode;
                 abuelo.parentNode.removeChild(abuelo);
             }
-            function clonar(elEvento) {
+            function clonar(elemento) {
                 //Tiene que añadirse encima del original
-                //Hace raros, no copia los onclick
-                var evento = elEvento || window.event;
-                var elementoOrigen = evento.srcElement;
-                var abuelo = elementoOrigen.parentNode.parentNode;
+                var abuelo = elemento.parentNode.parentNode;
                 var fila = abuelo.cloneNode(true);
                 fila.id = 'fila-' + filas++;
-                var tabla = document.getElementById('tabla');
-                
-                tabla.appendChild(fila);
+                //insertBefore(nuevoNodo, nodoReferencia)
+                //Inserta en los hijos de tal nodo, el nuevo nodo ANTES del nodo de referencia
+                abuelo.parentNode.insertBefore(fila, abuelo);
             }
         </script>
     </body>

@@ -1,0 +1,28 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=23-ene-2015
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción= Formulario para la Entrega 6
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadir()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrar()" disabled><br>
+            <input type="button" name="boton" value="Añadir Core" onclick="añadirCore()">
+            <input type="button" name="boton" value="Añadir DOM" onclick="añadirDOM()">
+        </form>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

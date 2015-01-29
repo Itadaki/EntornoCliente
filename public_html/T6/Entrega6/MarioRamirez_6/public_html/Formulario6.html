@@ -1,0 +1,93 @@
+<!--
+Autor=Mario Ramírez Padilla
+Fecha=03-oct-2014
+Licencia=gpl30
+Version=1.0
+Descripcion=Realización de formulario el cual solo puede contener un maximo y un minimo de campos de texto.
+-->
+<!--
+Copyright (C) 2014 Mario Ramírez Padilla
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var cont = 1;
+            
+            /*
+             * @description: La funcion añadirCampo campo, crea todos los tags label con sus respectivos campos de texto hasta un maximo de 10.
+                             Cuando son 10 elementos en total, se deshabilita el boton.
+             */
+            function anadirCampo() {
+                //Laura: los campos se añaden debajo del anterior y encima de los botones
+                //Laura: se añade hasta el campo 9
+                if (cont <= 10) {
+                    var campo = document.createElement("label");
+                    var espacio1 = document.createElement("br");
+                    var espacio2 = document.createElement("br");
+                    var campoTexto = document.createElement("input");
+                    var contenidoCampo = document.createTextNode("Campo" + cont);
+                    campo.appendChild(espacio1);
+                    campo.appendChild(espacio2);
+                    campo.appendChild(contenidoCampo);
+                    document.getElementById("f1").appendChild(campo).appendChild(campoTexto);
+                    cont++;
+                }
+                else {
+                    //Laura: no tiene que ser necesario que se pulse el botón para deshabilitarlo
+                    alert("Ya no puede añadir mas campos");
+                    document.getElementById("b1").disabled = true;
+                }
+            }
+            
+            
+            /*
+             * @description: La funcion borrarCampo borra el ultimo elemento input,label y br dentro del formulario, una vez
+                             queda un unico elemento, se deshabilita el boton.
+             */
+            //LAura: borrar no funciona
+            function borrarCampo() {
+                if (cont > 1) {
+                    cont--;
+                    var elementosInput=document.getElementsByTagName("input").length-1;
+                    var elementosTexto=document.getElementsByTagName("label").length-1;
+                    var elementosBr=document.getElementsByTagName("br").length-1;
+                    document.getElementById("f1").removeChild(elementosInput).removeChild(elementosTexto).removeChild(elementosBr);
+                    
+                }
+                else {
+                    alert("Ya no se pueden borrar mas campos");
+                    document.getElementById("b2").disabled = true;
+                }
+            
+            }
+
+        </script>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="anadirCampo()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrarCampo()">
+        </form>
+    </body>
+</html>

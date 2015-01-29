@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2015 Patricia Del Moral Jiménez
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var contadorcampo = 1;
+            var contadorid = 1;
+
+//          funcion para añadir elementos
+            function añadir() {
+
+                //cojo todos las etiquetas label que hay en el documento
+                var inputs = document.getElementsByTagName("label");
+                //creo una variable donde añado el texto que quiero crear. 
+                //Para poder sacar el número del campo genero una variable fuera de la función y le pongo un contador
+                //para que a medida que le demos a añadir se incremente el valor y hago lo mismo con la ID del campo
+                var total = "<label> Campo" + contadorcampo++ + "</label><input type='text' id= c" + contadorid++ + "><br><br>";
+
+                //este If lo genero para que cuando el array llegue a 10 pare y no se pueda añadir más campos
+                if (inputs.length === 9) {
+                    document.getElementById('b1').disabled = true;
+                    document.getElementById('b2').disabled = false;
+                }
+
+                //este if lo genero para que cuando solo haya 1 elemento del array solo este activado el botón de añadir
+                if (inputs.length === 0) {
+                    document.getElementById('b1').disabled = false;
+                    document.getElementById('b2').disabled = true;
+                }
+
+                else {
+                    document.getElementById('b2').disabled = false;
+                    document.getElementById('b1').insertAdjacentHTML('beforebegin', total);
+                }
+            }
+
+            function borrar() {
+                //cojo todos las etiquetas inputs que hay en el documento
+                var inputs = document.getElementsByTagName("input");
+                removeChild(inputs[inputs.length - 1]);
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadir()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" disabled onclick="borrar()">
+        </form>
+    </body>
+</html>

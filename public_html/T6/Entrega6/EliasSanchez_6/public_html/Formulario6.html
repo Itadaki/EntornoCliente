@@ -1,0 +1,148 @@
+<!--
+
+<!--
+Autor=Elias Sanchez Arroyo
+Fecha=12-ene-2015
+Licencia=gpl30
+Version=1.0
+Descripcion= Documento HTML y script Javascript. Examen parcial Tema 6.
+
+Copyright (C) 2015 Elias Sanchez
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var i = 0;
+            
+            /**@nombre: añadir
+               @description añade un tag label y un tag input de texto al formulario separados por dos breaks*
+                */
+            
+            function añadir()
+            {
+                /****/
+                /**esta variable controla los hijos de formulario que se van añadiendo o borrando**/
+                i++;
+                /**se guardan los arrays form, labels e inputs del documento en variables**/
+                var form = document.getElementsByTagName("form")[0];              
+                var labels = document.getElementsByTagName("label");
+                var inputs = document.getElementsByTagName("input");
+                
+                /**se crean los elementos que se van a añadir**/
+                var labelF = document.createElement("label");
+                var textoLabel = document.createTextNode("Campo" + i);
+                labelF.appendChild(textoLabel);
+                inputs[i - 1].appendChild(labelF);
+
+                /**cuando i es mayor que 0 coloca los br's de separación de forma normal junto con los elementos**/
+                if (i > 0)
+                {
+                    var inputF = document.createElement("input");
+                    inputF.setAttribute("type", "text");
+                    inputF.setAttribute("id", "c" + i);
+                    inputF.setAttribute("name", "campo");
+
+                    var br = document.createElement("br");
+                    var br1 = document.createElement("br");
+
+                    form.insertBefore(inputF, inputs[inputs.length - 2]);
+                    form.insertBefore(labelF, inputF);
+                    form.insertBefore(br, inputs[inputs.length - 2]);
+                    form.insertBefore(br1, br);
+
+                }
+                /**cuando i es 0, no deja margen, ya que viene por defecto**/
+                else
+                {
+                    var inputF = document.createElement("input");
+                    inputF.setAttribute("type", "text");
+                    inputF.setAttribute("id", "c" + i);
+                    inputF.setAttribute("name", "campo");
+
+                    var br = document.createElement("br");
+                    var br1 = document.createElement("br");
+
+                    form.insertBefore(inputF, br);
+                    form.insertBefore(labelF, inputF);
+                }
+                
+                /**deshabilitamos el boton añadir cuando se sobre pasa el limite de nodos añadidos**/
+                var añadir = document.getElementById("b1");
+                if (i==10)
+                {
+                    
+                    añadir.disabled = true;
+                }
+                else
+                {
+                    añadir.disabled = false;
+                }
+
+            }
+            
+            /**@nombre: borrar
+               @description borra los ultimos tag label y tag input de texto del formulario junto con los dos breaks*
+                */
+            function borrar()
+            {
+                /**nombramos los arrays de forma similar que en la función añadir**/
+                i--;
+                var formu = document.getElementsByTagName("form")[0];
+                var labels = document.getElementsByTagName("label");
+                var inputs = document.getElementsByTagName("input");
+                var br = document.getElementsByTagName("br");
+                
+                /**conseguimos las posiciones exactas para la eliminación de los respectivos nodos**/
+                var br1= br[br.length-1];
+                var br2 = br[br.length-2];          
+                var lastLabel = labels[labels.length-1];
+                var lastInput = inputs[inputs.length-3];
+                
+                /**eliminamos del formulario dichos nodos**/
+                formu.removeChild(lastLabel);
+                formu.removeChild(lastInput);
+                formu.removeChild(br1);
+                formu.removeChild(br2);
+                //Laura: No controlas bien la deshabilitación de los botones, una vez que borras ya no se puede volver a borrar
+                //Laura: botón derecho format 
+                /**se deshabilita el boton borrar cuando se alcanza el minimo de nodos**/
+                var borrar = document.getElementById("b2");
+                if (i<1)
+                {                
+                    borrar.disabled = true;
+                }
+                else
+                {
+                    borrar.disabled = false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadir()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrar()">
+        </form>
+    </body>
+</html>

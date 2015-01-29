@@ -1,0 +1,45 @@
+
+<!--
+Autor=Lorena Marchan
+Fecha=26-ene-2015
+Licencia=gpl30
+Version=1.0
+Descripcion=Documento HTML que consta de un formulario con campos ampliable, 
+            para el examen del tema 6 de JavaScript.
+-->
+
+<!--
+Copyright (C) 2015 Lorena Marchan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/formularioAmpliable.js"></script>
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadir();">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrar();" disabled="disabled">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+Autor=Oscar Ventura
+Fecha=24-ene-2015
+Licencia=default
+Version=1.0
+Descripcion=
+-->
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        
+        function borrar() { /* borra todo el tag lista */
+            
+        var div=document.getElementById("padre");
+        div.parentNode.removeChild(div);
+        }
+        
+        function eliminar() { /* borra hijos */
+            
+            var hijos=document.getElementById("padre").getElementsByTagName("li");
+            var borrar=prompt("¿Qué hijo quieres borrar? primer ó último");
+            var hijo1=document.getElementsByTagName("li")[0];
+            var n_hijos=hijos.length;
+        
+            if (borrar==="primer") {
+                document.getElementById("padre").removeChild(hijo1);
+            }
+            else if (borrar==="ultimo") {
+                hijos[n_hijos-1].parentNode.removeChild(hijos[n_hijos-1]);
+            }
+            else
+                alert("valor incorrecto");
+        }
+        
+        function insertar() { /* prueba del método insertAdjacentHTML. Este método inserta texto */
+            
+            var padre=document.getElementById("padre");
+             
+             padre.insertAdjacentHTML("beforebegin","texto beforebegin"); /* inserta el texto antes de la etiqueta padre (el 'ul')*/
+             padre.insertAdjacentHTML("afterbegin","texto afterbegin");  /* inserta el texto despues de la etiqueta padre (el 'ul')*/
+             padre.insertAdjacentHTML("beforeend","texto beforeend");   /* inserta el texto antes del final de la etiqueta padre (el 'ul')*/
+             padre.insertAdjacentHTML("afterend","texto afterend");    /* inserta el texto despues del final de la etiqueta padre (el 'ul')*/
+        }
+        
+        function insertar2() { /* prueba del método insertBefore. Este método inserta nodos */
+            
+            var nuevohijo=document.createElement("li");
+            var nombrenuevohijo=document.createTextNode("hijo 0");
+            var padre=document.getElementById("padre");
+            var hijo1=document.getElementsByTagName("li")[0];
+            
+            nuevohijo.appendChild(nombrenuevohijo);
+            padre.insertBefore(nuevohijo,hijo1); /* insertamos el nodo 'nuevohijo' antes del 'hijo1' */
+        }        
+        
+        function clonar() { /*  */
+            
+            var hijo2=document.getElementsByTagName("li")[1];
+            var clonado=hijo2.cloneNode(true); /* tenemos que crear una variable con el nodo clonado */
+            
+            document.getElementById("padre").appendChild(clonado);/* añadir la variable del nodo creado como hijo */ 
+        }
+        
+        function abrir() {
+            
+            window.open("ej9(2).html");
+        }
+        
+    </script>
+  </head>
+  <body>
+      <div id="abuelo">entre el div y la lista<br>
+          <ul id="padre">
+              <li>hijo 1</li>
+              <li>hijo 2</li>
+              <li>hijo 3</li>
+          </ul>
+      </div>
+      <input type="button" id="borrar" value="eliminar hijo" onclick="eliminar()">
+      <input type="button" id="insertar" value="insertAdjacentHTML" onclick="insertar()">
+      <input type="button" id="insertar2" value="insertBefore" onclick="insertar2()">
+      <input type="button" id="clonar" value="clonar" onclick="clonar()">
+      <input type="button" id="eliminar" value="eliminar lista" onclick="borrar()">
+      <input type="button" id="abrir" value="abrir ventana" onclick="abrir()">
+  </body>
+</html>

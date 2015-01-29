@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Autor = Sergio Serrano Mejias
+Fecha = 26-ene-2015
+Licencia = gpl30
+Version = 1.0
+Descripcion = LAura: sin rellenar 
+
+-->
+<!--
+Copyright (C) 2015 Sergio Serrano Mejias
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Formulario ampliable</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadirCampo()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrarCampo()" disabled="">
+        </form>
+        <script>
+            /**
+             * 
+             * @description Añade un label y un campo de texto nuevo;
+             */
+            function añadirCampo() {
+                //Laura: añadir tiene que añadir cada campo debajo del anterior y encima de los botones
+                var nCampo = document.getElementsByTagName('input').length - 2;
+                var nID = nCampo + 1;
+                var campo = document.getElementById('c1');
+                var br = document.getElementsByTagName('br');
+                var ultBR = br[br.length - 1];
+
+                if (nCampo < 10) {
+                    document.getElementById('b1').disabled = false;
+                    document.getElementById('b2').disabled = false;
+                    
+                    var nuevo = campo.cloneNode(true); // clono el campo que hay y asi solo hay que modificarle el atributo id;
+                    nuevo.setAttribute('id', 'c' + nID);
+                    document.getElementById('f1').innerHTML += "<label>Campo" + nCampo + "</label>";
+                    document.getElementsByTagName("form")[0].appendChild(nuevo);
+                    document.getElementById('f1').innerHTML += '<br><br>';
+
+                } else {
+                    //Laura: no tiene que ser necesario pulsar el botón para que se deshabilite
+                    document.getElementById('b1').disabled = true;
+                }
+                //Laura: esto sobra
+//                ultBR.insertAdjacentHTML ('AfterEnd', "<label>Campo"+nCampo+"</label>");
+//                var label = document.getElementsByTagName('label');
+//                var ultLabel = label[label.length-1];
+//                ultLabel.insertAdjacentHTML ('AfterEnd',"<input type='text' id='c"+nID+" name='campo'>");
+
+            }
+            /**
+             * 
+             * @description Borra el ultimo campo de texto y el ultimo label;
+             */
+            //Laura: borrar no funciona
+            function borrarCampo(){
+                var nCampo = document.getElementsByTagName('input').length - 2;
+                if (nCampo < 10 && nCampo>1){
+                var formulario = document.getElementById("f1");
+                formulario.removeChild(document.getElementsByTagName('input')[nCampo+1]);  
+                formulario.removeChild(document.getElementsByTagName('label')[document.getElementsByTagName('label').length-1]); 
+                }
+                
+            }
+        </script>
+    </body>
+</html>

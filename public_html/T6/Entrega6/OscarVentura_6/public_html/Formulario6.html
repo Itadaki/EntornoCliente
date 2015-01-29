@@ -1,0 +1,65 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=23-ene-2015
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción= Formulario para la Entrega 6
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            
+            var cont=0;
+            //Laura: comentarios de funciones
+            function anadir() {
+                
+                
+                cont++;
+                
+                var campo = document.createElement("input"); /* crea un botón 'inupt' con atributo 'text'*/
+                campo.setAttribute("type", "text");
+                
+                //Laura: código sin formatear
+                for (var i=0;i<cont;i++) {
+                   
+                   var padre=document.getElementById("b1");
+                }
+                //Laura: inserAdjacentHTML hay que pasarle texto no un nodo! outerHTML, por eso no te añade al campo correctamente
+                  padre.insertAdjacentHTML("beforebegin","campo"+i+campo+"<br><br>"); /* deja 2 espacios entre elementos*/
+                  
+                  
+                if (cont>8) {document.getElementById("b1").disabled=true;} /* cuando llega al elemento 9 se desactiva el botón */
+                
+         }
+           
+          //Laura: borrar no funciona 
+          function borrar() {
+              
+              cont--;
+              
+            var hijos=document.getElementById("f1").getElementsByTagName("label");
+            var n_hijos=hijos.length;
+            
+            
+            hijos[n_hijos-1].parentNode.removeChild(hijos[n_hijos-1]);
+              
+             
+          }
+            
+        </script>
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="anadir()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" onclick="borrar()">
+        </form>
+    </body>
+</html>

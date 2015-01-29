@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 
+#Autor = Patricia Del Moral Jiménez
+#Fecha = 09-ene-2015
+#Licencia = gpl30
+#Versión=1.0
+#Descripción= Examén día 26/01/2015 donde tenemos que añadir campos en orden y borrarlos
+-->
+
+<html>
+    <head>
+        <title>Formulario Ampliable</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var contadorcampo = 1;
+            var contadorid = 1;
+//Laura: formatear código correctamente
+//          funcion para añadir elementos
+            function añadir() {
+
+                //cojo todos las etiquetas label que hay en el documento
+                var inputs = document.getElementsByTagName("label");
+                //creo una variable donde añado el texto que quiero crear. 
+                //Para poder sacar el número del campo genero una variable fuera de la función y le pongo un contador
+                //para que a medida que le demos a añadir se incremente el valor y hago lo mismo con la ID del campo
+                var total = "<label> Campo" + contadorcampo++ + "</label><input type='text' id= c" + contadorid++ + "><br><br>";
+
+                //este If lo genero para que cuando el array llegue a 10 pare y no se pueda añadir más campos
+                //Laura: Eesto se puede hacer más eficiente
+                if (inputs.length === 9) {
+                    document.getElementById('b1').disabled = true;
+                    document.getElementById('b2').disabled = false;
+                }
+
+                //este if lo genero para que cuando solo haya 1 elemento del array solo este activado el botón de añadir
+                if (inputs.length === 0) {
+                    document.getElementById('b1').disabled = false;
+                    document.getElementById('b2').disabled = true;
+                }
+
+                else {
+                    document.getElementById('b2').disabled = false;
+                    document.getElementById('b1').insertAdjacentHTML('beforebegin', total);
+                }
+            }
+            
+            //Laura: borrar no hace nada
+            function borrar() {
+                //cojo todos las etiquetas inputs que hay en el documento
+                
+                var inputs = document.getElementsByTagName("input");
+                inputs.removeChild(inputs[inputs.length - 1]);
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <form name="form" id="f1" method="post" action="">
+            <h1>Formulario Ampliable</h1>
+            <label>Campo0</label> 
+            <input type="text" id="c1" name="campo">
+            <br><br>
+            <input type="button" id="b1" name="boton" value="Añadir Campo" onclick="añadir()">
+            <input type="button" id="b2" name="boton" value="Borrar Campo" disabled onclick="borrar()">
+        </form>
+    </body>
+</html>

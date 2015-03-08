@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Autor = Diego Rodríguez Suárez-Bustillo
+Fecha = 08-mar-2015
+Licencia = gpl30 
+Version = 1.0
+Descripcion = Descárgate del aula virtual Ejercicio6.html. 
+Cada vez que pase el ratón sobre los párrafos p1 se mostrará un alert 
+indicando que son párrafos p1 y cada vez que el ratón salga de los párrafos p2 se
+mostrará un alert indicando que son párrafos p1. 
+No debe ocurrir nada cuando se pase o salga el ratón de los h2.
+-->
+
+<!--
+Copyright (C) 2015 Diego Rodríguez Suárez-Bustillo
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>Ejercicio 6 - Actividades - JQuery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-2.1.3.min.js"></script>
+    </head>
+    <body>
+        <h1>Ejercicio 6</h1>
+        <p class="p1">Soy el párrafo 1</p>
+        <h2 class="p2">Soy el encabezado 1</h2>
+        <h2 class="p1">Soy el encabezado 2</h2>
+        <p class="p2">Soy el párrafo 2</p>
+        <h2 class="p1">Soy el encabezado 3</h2>
+        <h2 class="p2">Soy el encabezado 4</h2>
+        <p class="p1">Soy el párrafo 3</p>
+        <h2 class="p1">Soy el encabezado 5</h2>
+        <h2 class="p2">Soy el encabezado 6</h2>
+        <p class="p2">Soy el párrafo 4</p>
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $('p.p1').mouseenter(function(){
+                   alert('Soy un parrafo p1');
+               });
+               $('p.p2').mouseout(function(){
+                   alert('Soy un parrafo p2');
+               });
+            });
+        </script>
+    </body>
+</html>
